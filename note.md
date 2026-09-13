@@ -1,6 +1,6 @@
 # Notes
 
-Running log for the [playwright-llm-tests](./) project.
+Running log for the [playwright-llm-tests](https://github.com/PavelAnhur/playwright-llm-tests) project.
 
 ---
 
