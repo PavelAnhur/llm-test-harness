@@ -25,21 +25,21 @@ $ npm test
 
  RUN  v3.2.7 /home/pavel/projects/playwright-llm-tests
 
-stdout | tests/day1-exact-match.spec.ts > Day 1 > a single color
+stdout | tests/smoke.spec.ts > Day 1 > a single color
 Prompt:    Name a color. Reply with one word only.
 Baseline:  "Red"
 Runs:      "Red", "Blue", "Blue", "Blue", "Blue"
 Matches:   1/5 (baseline appeared 1 time(s))
 Distinct:  2
 
-stdout | tests/day1-exact-match.spec.ts > Day 1 > a random number between 1 and 100
+stdout | tests/smoke.spec.ts > Day 1 > a random number between 1 and 100
 Prompt:    Give me a random number between 1 and 100. Reply with the number only.
 Baseline:  "42"
 Runs:      "42", "87", "12", "99", "3"
 Matches:   1/5 (baseline appeared 1 time(s))
 Distinct:  5
 
- ❯ tests/day1-exact-match.spec.ts (4 tests | 4 failed)
+ ❯ tests/smoke.spec.ts (4 tests | 4 failed)
    × Day 1 > a single color
      → Expected all 5 runs to match the baseline. 2 distinct responses observed: Red, Blue
    × Day 1 > a random number between 1 and 100
@@ -52,6 +52,7 @@ Distinct:  5
 
 
 ## Day 2 — Property-based assertions pass
+- [`day2-properties.test.ts`](./tests/day2-properties.test.ts)
 
 **Setup:** same prompts, same model, same `temperature: 0.7`, 5 runs
 per test.
