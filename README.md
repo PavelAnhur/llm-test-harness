@@ -30,12 +30,13 @@ rather than a single run.
 ## What's covered
 
 | Area                 | What it tests                                                             |
-|----------------------|---------------------------------------------------------------------------|
+| -------------------- | ------------------------------------------------------------------------- |
 | Property assertions  | JSON schema, required and forbidden keys, numeric ranges, enum membership |
 | Pass-rate thresholds | Multi-run execution with a configurable success floor                     |
 | Adversarial inputs   | Prompt injection, boundary inputs, empty input, role confusion            |
 | SQL verification     | Persisted state in the database matches what the response claims          |
 | Structured reporting | Allure reports with pass rate as a parameter, grouped by feature          |
+
 ## What this is not
 
 - Not an LLM application. There is no UI, no chat, no product.
@@ -44,8 +45,8 @@ rather than a single run.
 - Not a benchmark. No scores against a public leaderboard.
 
 - Not a replacement for human review. LLM-as-a-judge is used for some
-checks, calibrated against a hand-labeled sample, and its limits are
-documented in the tests.
+  checks, calibrated against a hand-labeled sample, and its limits are
+  documented in the tests.
 
 ## Quick start
 
@@ -63,8 +64,8 @@ npm run allure:open
 #run only the adversarial suite
 npm run test:adversarial
 ```
-#
 
+#
 
 ## Project structure
 
@@ -93,16 +94,17 @@ playwright-llm-tests/
 ├── notes.md                     # week-by-week reflection
 └── package.json
 ```
+
 </details>
 
 ## Roadmap
 
-| **Week** |                                **Focus**                               |  **Status**|
-|:--------|:-----------------------------------------------------------------------|:-----------|
-|     1    | Property assertions, multi-run harness, adversarial inputs, SQL checks | in progress|
-|     2    | LLM-as-a-judge with calibration against a hand-labeled sample          | planned    |
-|     3    | RAG metrics (faithfulness, answer relevance, context precision)        | planned    |
-|     4    | Streaming tests (SSE, TTFT, mid-stream disconnect)                     | planned    |
+| **Week** | **Focus**                                                              | **Status**  |
+| :------- | :--------------------------------------------------------------------- | :---------- |
+| 1        | Property assertions, multi-run harness, adversarial inputs, SQL checks | in progress |
+| 2        | LLM-as-a-judge with calibration against a hand-labeled sample          | planned     |
+| 3        | RAG metrics (faithfulness, answer relevance, context precision)        | planned     |
+| 4        | Streaming tests (SSE, TTFT, mid-stream disconnect)                     | planned     |
 
 ## Tech stack
 
@@ -128,4 +130,3 @@ The GitHub Actions workflow runs on every push:
 
 This is a personal project. It is not looking for external contributions,\
 but issues and questions are welcome.
-

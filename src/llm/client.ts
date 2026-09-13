@@ -1,6 +1,5 @@
-import 'dotenv/config';
-import OpenAI from 'openai';
-
+import "dotenv/config";
+import OpenAI from "openai";
 
 export interface LlmResponse {
   /** Raw text returned by the model. */
@@ -28,8 +27,8 @@ export interface GenerateOptions {
   signal?: AbortSignal;
 }
 
-const PROVIDER = process.env.LLM_PROVIDER ?? 'openai';
-const DEFAULT_MODEL = process.env.OPENAI_MODEL ?? 'gpt-4o-mini';
+const PROVIDER = process.env.LLM_PROVIDER ?? "openai";
+const DEFAULT_MODEL = process.env.OPENAI_MODEL ?? "gpt-4o-mini";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -43,9 +42,9 @@ const openai = new OpenAI({
  */
 export async function generate(
   prompt: string,
-  options: GenerateOptions = {}
+  options: GenerateOptions = {},
 ): Promise<LlmResponse> {
-  if (PROVIDER === 'ollama') {
+  if (PROVIDER === "ollama") {
     return generateWithOllama(prompt, options);
   }
   return generateWithOpenAI(prompt, options);
@@ -53,23 +52,21 @@ export async function generate(
 
 async function generateWithOpenAI(
   prompt: string,
-  options: GenerateOptions
+  options: GenerateOptions,
 ): Promise<LlmResponse> {
   const startedAt = Date.now();
-  const completion = await openai.chat.completions.create(
-    {
-      model: DEFAULT_MODEL,
-      messages: [
-        ...(options.system
-          ? [{ role: 'system' as const, content: options.system }]
-          : []),
-        { role: 'user' as const, content: prompt },
-      ],
-      temperature: options.temperature ?? 0,
-      ...(options.maxTokens !== undefined && { max_tokens: options.maxTokens }),
-    }
-  );
-  const text = completion.choices[0]?.message?.content ?? '';
+  const completion = await openai.chat.completions.create({
+    model: DEFAULT_MODEL,
+    messages: [
+      ...(options.system
+        ? [{ role: "system" as const, content: options.system }]
+        : []),
+      { role: "user" as const, content: prompt },
+    ],
+    temperature: options.temperature ?? 0,
+    ...(options.maxTokens !== undefined && { max_tokens: options.maxTokens }),
+  });
+  const text = completion.choices[0]?.message?.content ?? "";
   return {
     text,
     model: completion.model,
@@ -86,30 +83,30 @@ async function generateWithOpenAI(
 
 async function generateWithOllama(
   prompt: string,
-  options: GenerateOptions
+  options: GenerateOptions,
 ): Promise<LlmResponse> {
-  const baseUrl = process.env.OLLAMA_BASE_URL ?? 'http://localhost:11434';
-  const model = process.env.OLLAMA_MODEL ?? 'llama3.1';
+  const baseUrl = process.env.OLLAMA_BASE_URL ?? "http://localhost:11434";
+  const model = process.env.OLLAMA_MODEL ?? "llama3.1";
   const startedAt = Date.now();
   const response = await fetch(`${baseUrl}/api/chat`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       model,
       stream: false,
       options: { temperature: options.temperature ?? 0 },
       messages: [
         ...(options.system
-          ? [{ role: 'system', content: options.system }]
+          ? [{ role: "system", content: options.system }]
           : []),
-        { role: 'user', content: prompt },
+        { role: "user", content: prompt },
       ],
     }),
     ...(options.signal && { signal: options.signal }),
   });
   if (!response.ok) {
     throw new Error(
-      `Ollama request failed: ${response.status} ${response.statusText}`
+      `Ollama request failed: ${response.status} ${response.statusText}`,
     );
   }
   const body = (await response.json()) as {
@@ -136,7 +133,7 @@ async function generateWithOllama(
  */
 export async function generateText(
   prompt: string,
-  options: GenerateOptions = {}
+  options: GenerateOptions = {},
 ): Promise<string> {
   const response = await generate(prompt, options);
   return response.text;

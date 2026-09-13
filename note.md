@@ -5,6 +5,7 @@ Running log for the [playwright-llm-tests](https://github.com/PavelAnhur/playwri
 ---
 
 ## Day 1 — Exact-match assertions fail against an LLM
+
 - [`tests/smoke.test.ts`](./tests/smoke.test.ts)
 
 **Setup:** `llama3.2:1b`, `temperature: 0.7`, 5 runs per prompt.
@@ -48,10 +49,11 @@ Distinct:  5
  Test Files  1 failed (1)
       Tests  4 failed (4)
 ```
+
 </details>
 
-
 ## Day 2 — Property-based assertions pass
+
 - [`day2-properties.test.ts`](./tests/day2-properties.test.ts)
 
 **Setup:** same prompts, same model, same `temperature: 0.7`, 5 runs
@@ -140,7 +142,7 @@ Run 4:
   "color": "red",
   "hex": "#ff0000"
 }
-Run 5: 
+Run 5:
 {
   "color": "red",
   "hex": "#ff0000"
@@ -158,6 +160,7 @@ Run 5:
    Start at  20:40:57
    Duration  4.56s (transform 86ms, setup 0ms, collect 182ms, tests 4.05s, environment 0ms, prepare 98ms)
 ```
+
 </details>
 
 ### Failures observed
@@ -171,7 +174,7 @@ correctly rejected this.
 Two fixes were available:
 
 1. Tighten the prompt: `"Write a two-line poem about autumn. Without
-   any intro. Just two lines."`
+any intro. Just two lines."`
 2. Loosen the assertion: extract the last two non-empty lines and
    assert on those.
 
