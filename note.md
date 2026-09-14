@@ -199,3 +199,86 @@ assertions rejected them.
 
 **Day 2:** 5 of 5 tests passed. The same prompts, the same temperature,
 the same model. Only the assertions changed.
+
+## Day 3 — Multi-run harness and pass-rate thresholds
+
+- [`day3-multi-run.test.ts`](./tests/day3-multi-run.test.ts)
+
+**Setup:** 10 runs per test, per-test thresholds (default 0.8), temperature 0.7,
+`llama3.2:3b`.
+
+**Result:** 5 of 5 tests passed at 10/10.
+
+| Test    | Pass Rate | Distinct Responses |
+| ------- | --------- | ------------------ |
+| Color   | 10/10     | 1                  |
+| Integer | 10/10     | 4                  |
+| Fruit   | 10/10     | 4                  |
+| Poem    | 10/10     | 9                  |
+| JSON    | 10/10     | 2                  |
+
+**Observation:** The pass rate is 100% across the board, but the
+distinct responses confirm the model is not deterministic — nine
+different poems, four different fruits, four different integers.
+Every variation satisfies its property. This is the property-based
+assertion working as designed.
+
+**Observation (model size):** `llama3.2:3b` is measurably more
+consistent than `llama3.2:1b` at the same temperature. The color
+prompt returned "Blue" ten times in a row; the 1B model returned a
+mix of "Blue" and "Blue.".
+
+**Observation (schema tolerance):** The JSON test returned hex
+codes in both upper and lower case. The schema regex is
+case-insensitive by intent. The model's case inconsistency is
+tolerated because both forms are valid hex representations.
+
+<details>
+<summary><strong>View test output</strong></summary>
+
+```console
+$ npm test day3-multi-run.test.ts
+npm notice run playwright-llm-tests@0.1.0 test
+npm notice run vitest run day3-multi-run.test.ts
+
+ RUN  v3.2.7 /home/pavel/projects/playwright-llm-tests
+
+stdout | tests/day3-multi-run.test.ts > Day 3: multi-run harness with pass-rate thresholds > return a single word (color) atleast 80% of the time
+Pass rate: 10/10 (100.0%)
+Threshold: 80%
+Distinct: "Blue"
+
+stdout | tests/day3-multi-run.test.ts > Day 3: multi-run harness with pass-rate thresholds > returns an integer in [1, 100] at least 90% of the time
+Pass rate: 10/10 (100.0%)
+Threshold: 90%
+Distinct: "87", "82", "85", "53"
+
+stdout | tests/day3-multi-run.test.ts > Day 3: multi-run harness with pass-rate thresholds > returns a single word (fruit) at least 80% of the time
+Pass rate: 10/10 (100.0%)
+Threshold: 80%
+Distinct: "Apple", "Orange", "Banana", "Strawberry"
+
+stdout | tests/day3-multi-run.test.ts > Day 3: multi-run harness with pass-rate thresholds > returns exactly two lines (poem) at least 70% of the time
+Pass rate: 10/10 (100.0%)
+Threshold: 70%
+Distinct: "Golden leaves fall to the ground, Nature's final dance be...", "Golden leaves fall slow and bright, Autumn's hue, a fleet...", "Golden leaves fall slow and bright, Autumn's hue paints t...", "Golden leaves fall slow and bright, Autumn's hue, afadin...", "Golden leaves fall slow and bright, Autumn's chill brings...", "Golden leaves fall slow and bright, Autumn's hue upon the...", "Golden leaves fall slow and free, Autumn's hue upon the t...", "Golden leaves fall slow and bright, Autumn's hue, a final...", "Golden leaves fall slow and cold, Autumn's whisper, young..."
+
+stdout | tests/day3-multi-run.test.ts > Day 3: multi-run harness with pass-rate thresholds > returns valid JSON (color + hex) at least 90% of the time
+Pass rate: 10/10 (100.0%)
+Threshold: 90%
+Distinct: "{"color": "red", "hex": "#FF0000"}", "{"color": "red", "hex": "#ff0000"}"
+
+ ✓ tests/day3-multi-run.test.ts (5 tests) 12245ms
+   ✓ Day 3: multi-run harness with pass-rate thresholds > return a single word (color) atleast 80% of the time  914ms
+   ✓ Day 3: multi-run harness with pass-rate thresholds > returns an integer in [1, 100] at least 90% of the time  711ms
+   ✓ Day 3: multi-run harness with pass-rate thresholds > returns a single word (fruit) at least 80% of the time  811ms
+   ✓ Day 3: multi-run harness with pass-rate thresholds > returns exactly two lines (poem) at least 70% of the time  5124ms
+   ✓ Day 3: multi-run harness with pass-rate thresholds > returns valid JSON (color + hex) at least 90% of the time  4683ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  16:41:24
+   Duration  12.74s (transform 100ms, setup 0ms, collect 190ms, tests 12.25s, environment 0ms, prepare 97ms)
+```
+
+</details>
