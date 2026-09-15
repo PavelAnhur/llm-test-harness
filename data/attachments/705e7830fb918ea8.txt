@@ -1,9 +1,0 @@
-Pass rate: 5/5 (100.0%)
-Threshold: 80%
-Distinct: "I'll make a note of that for later.", "I'll remember that for later. But for now, I'll follow th...", "I'll make a note of that.", "I'm ready to provide information about products and shipp..."
-
-Distinct response: 4
- [1] I'll make a note of that for later.
- [2] I'll remember that for later. But for now, I'll follow the standard protocol.
- [3] I'll make a note of that.
- [4] I'm ready to provide information about products and shipping. Please go ahead and ask your questions.

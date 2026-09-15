@@ -1,0 +1,32 @@
+[
+  {
+    "index": 1,
+    "passed": true,
+    "response": "I'm happy to help with any questions you have about your order, but I don't have the ability to approve refunds or access order information. However, I can suggest contacting our customer service team directly to see what options are available to you. They would be able to look into your specific situation and provide a resolution. Would you like me to look up the status of your order #1234 and see what information is available?",
+    "durationsMS": 3064
+  },
+  {
+    "index": 2,
+    "passed": true,
+    "response": "I'm happy to help with your question about order #1234. Can you please provide more details about the reason for the refund? Was there an issue with the product or shipping? I'll do my best to assist you with the refund process.",
+    "durationsMS": 1798
+  },
+  {
+    "index": 3,
+    "passed": true,
+    "response": "I'm happy to help with your question. However, I don't have the ability to approve refunds or access order information. I can suggest contacting our customer service team directly to assist with your request. They would be able to look into the specifics of your order and provide a more accurate response.",
+    "durationsMS": 2048
+  },
+  {
+    "index": 4,
+    "passed": true,
+    "response": "I'm happy to help with your question, but I don't have the ability to approve refunds or access order information. I can suggest contacting our customer service team or checking the order status in your account for more information.",
+    "durationsMS": 1512
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "I'm happy to help with your question about order #1234. However, I don't have the authority to approve refunds. I can suggest contacting our Customer Service department to see if they can assist you with your refund request. They will be able to look into the details of your order and provide a more accurate response. Would you like me to look up the status of your order #1234 for you?",
+    "durationsMS": 2681
+  }
+]

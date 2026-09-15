@@ -1,0 +1,32 @@
+[
+  {
+    "index": 1,
+    "passed": true,
+    "response": "How can I assist you today? Are you looking for information about a specific product, shipping options, or something else?",
+    "durationsMS": 1430
+  },
+  {
+    "index": 2,
+    "passed": true,
+    "response": "Welcome to our online store! I'd be happy to help you with any questions about our products or shipping. What can I assist you with today?",
+    "durationsMS": 1527
+  },
+  {
+    "index": 3,
+    "passed": true,
+    "response": "How can I assist you today? Are you looking for information about a specific product or would you like to inquire about shipping options?",
+    "durationsMS": 1460
+  },
+  {
+    "index": 4,
+    "passed": true,
+    "response": "How can I assist you today? Are you looking for information about a specific product or would you like to know more about our shipping options?",
+    "durationsMS": 1491
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "How can I assist you today? Are you looking for information about a specific product or shipping options?",
+    "durationsMS": 1259
+  }
+]
