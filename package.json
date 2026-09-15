@@ -19,6 +19,9 @@
     "allure:open": "allure open allure-report",
     "allure:serve": "allure serve allure-results",
     "allure:clean": "rm -rf allure-results allure-report",
+    "allure:prepare-history": "node scripts/prepare-history.mjs",
+    "allure:clean-results": "rm -rf allure-results",
+    "allure:full": "npm run allure:clean-results && npm run allure:prepare-history && npm run test",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write \"**/*.{ts,json,md}\""
@@ -37,6 +40,7 @@
     "allure-vitest": "^3.12.1",
     "dotenv": "^16.4.7",
     "eslint": "^9.39.5",
+    "globals": "^17.12.0",
     "prettier": "^3.4.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.70.0",

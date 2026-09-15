@@ -24,7 +24,6 @@ export async function attachResult(
   result: MultiRunResult,
   formatted: string,
 ): Promise<void> {
-  await allure.parameter("passRate", `${result.passCount}/${result.totalRuns}`);
   await allure.parameter(
     "threshold",
     `${(result.threshold * 100).toFixed(0)}%`,
