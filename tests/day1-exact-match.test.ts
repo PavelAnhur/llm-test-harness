@@ -1,5 +1,7 @@
 import { generate } from "@llm/client";
 import { describe, expect, it } from "vitest";
+import { label } from "@harness/allure";
+import { Severity } from "allure-js-commons";
 
 interface PromptCase {
   readonly name: string;
@@ -34,6 +36,13 @@ describe("Day 1: exact-match assertions against an LLM", () => {
     it(`fails to return the same answer for ${name}`, async () => {
       // Capture the first response as our "expected" value.
       // This is the trap: we assume the first run is the truth.
+      await label({
+        epic: "LLM Testing",
+        feature: "Demonstrations",
+        story: "Exact-Match Failure (Day 1)",
+        severity: Severity.MINOR,
+        tags: ["day-1", "demonstration", "expected-failure"],
+      });
       const baseline = (await generate(prompt, { temperature: TEMPERATURE }))
         .text;
       const responses: string[] = [baseline];
