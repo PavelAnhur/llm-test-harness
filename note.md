@@ -435,3 +435,31 @@ Failures (4 distinct):
 ```
 
    </details>
+
+## Day 5 — Allure integration and the first portfolio artifact
+
+**Setup:** Allure Vitest reporter, custom `attachResult` and `note`
+helpers, labels applied per test inside the `it` block.
+
+**Result:** All 15 tests visible in the report, grouped by epic and
+feature. Each test carries:
+
+- `passRate` as a parameter (visible in the table)
+- `threshold` as a parameter
+- A JSON attachment with every response, per run
+- A text summary
+- A `note` attachment with the finding in plain language
+
+The indirect-injection test is the most valuable artifact. It shows
+a failing test (0/5 pass rate), the finding in prose, and the four
+non-compliant responses as evidence.
+
+**What the report is for:** A hiring manager who opens this report
+should understand what the project tests in under a minute. The
+labels, parameters, and notes are what make that possible. A raw
+list of pass/fail is not.
+
+**What is not in CI:** The report is regenerated locally and pushed.
+CI runs typecheck and lint only. Running the full suite on every
+push would require a model, which is expensive and slow. A mocked
+provider is planned for Week 2.

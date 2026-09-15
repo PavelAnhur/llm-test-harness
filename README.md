@@ -120,11 +120,18 @@ as pass/fail.\
 
 The GitHub Actions workflow runs on every push:
 
-1. Lint and typecheck.
-2. Unit tests for assertion and harness logic.
-3. Integration tests against a recorded LLM response set (no live API calls in CI, to keep the run deterministic and free).
-4. Allure report published to GitHub Pages.
-5. Live-API tests are excluded from CI on purpose. They are run locally before any change to an assertion or a prompt.
+CI runs typecheck and lint only. The LLM-dependent tests are not
+executed in CI — they require a model running locally or a paid API
+key, and running them on every push would be slow, expensive, and
+non-deterministic.
+
+The published Allure report is a snapshot from the last local run.
+It is regenerated manually and pushed to the `gh-pages` branch.
+📊 **[View the latest Allure report](https://pavelanhur.github.io/playwright-llm-tests/)**
+
+A mocked LLM provider is planned for Week 2. Once it lands, CI will
+run the full suite against recorded responses, and the report will
+regenerate on every push without a model dependency.
 
 ## Contributing
 

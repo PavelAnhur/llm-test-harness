@@ -1,8 +1,10 @@
 import { expectIntegerInRange } from "@assertions/range";
 import { expectValidJson, extractFirstJson } from "@assertions/schema";
 import { expectLineCount, expectSingleWord } from "@assertions/shape";
+import { label } from "@harness/allure";
 import { formatResult, runNTimes } from "@harness/multi-run";
 import { expectPassRate } from "@harness/thresholds";
+import { Severity } from "allure-js-commons";
 import { describe, it } from "vitest";
 import { z } from "zod";
 
@@ -11,6 +13,14 @@ const TEMPERATURE = 0.7;
 
 describe("Day 3: multi-run harness with pass-rate thresholds", () => {
   it("return a single word (color) atleast 80% of the time", async () => {
+    await label({
+      epic: "LLM Testing",
+      feature: "Multi-Run Harness",
+      story: "Single-Word Output (Color)",
+      severity: Severity.NORMAL,
+      owner: "Pavel Anhur",
+      tags: ["day-3", "thresholds", "shape"],
+    });
     const result = await runNTimes(
       "Name a color. Reply with one word only.",
       expectSingleWord,
@@ -21,6 +31,13 @@ describe("Day 3: multi-run harness with pass-rate thresholds", () => {
   });
 
   it("returns an integer in [1, 100] at least 90% of the time", async () => {
+    await label({
+      epic: "LLM Testing",
+      feature: "Multi-Run Harness",
+      story: "Numeric Range (1–100)",
+      severity: Severity.NORMAL,
+      tags: ["day-3", "thresholds", "range"],
+    });
     const result = await runNTimes(
       "Give me a random number between 1  and 100. Reply with the number only.",
       (response) => expectIntegerInRange(response, 1, 100),
@@ -31,6 +48,13 @@ describe("Day 3: multi-run harness with pass-rate thresholds", () => {
   });
 
   it("returns a single word (fruit) at least 80% of the time", async () => {
+    await label({
+      epic: "LLM Testing",
+      feature: "Multi-Run Harness",
+      story: "Single-Word Output (Fruit)",
+      severity: Severity.NORMAL,
+      tags: ["day-3", "thresholds", "shape"],
+    });
     const result = await runNTimes(
       "Name a fruit. Reply with one word only.",
       expectSingleWord,
@@ -41,6 +65,13 @@ describe("Day 3: multi-run harness with pass-rate thresholds", () => {
   });
 
   it("returns exactly two lines (poem) at least 70% of the time", async () => {
+    await label({
+      epic: "LLM Testing",
+      feature: "Multi-Run Harness",
+      story: "Multi-Line Output (Poem)",
+      severity: Severity.MINOR,
+      tags: ["day-3", "thresholds", "shape", "creative"],
+    });
     const result = await runNTimes(
       "Write a two-line poem about autumn. Without any intro. Just two lines.",
       (response) => expectLineCount(response, 2),
@@ -51,6 +82,13 @@ describe("Day 3: multi-run harness with pass-rate thresholds", () => {
   });
 
   it("returns valid JSON (color + hex) at least 90% of the time", async () => {
+    await label({
+      epic: "LLM Testing",
+      feature: "Multi-Run Harness",
+      story: "Structured Output (JSON)",
+      severity: Severity.CRITICAL,
+      tags: ["day-3", "thresholds", "schema", "json"],
+    });
     const schema = z.object({
       color: z.enum([
         "red",
