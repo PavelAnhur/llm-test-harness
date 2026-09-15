@@ -1,1 +1,1 @@
-{"total":5,"items":[{"uid":"5786c81627bc5f47de22a27e85733ddc","name":"LLM Testing","statistic":{"failed":1,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":3}}]}
+{"total":1,"items":[{"uid":"5786c81627bc5f47de22a27e85733ddc","name":"LLM Testing","statistic":{"failed":2,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":4}}]}
