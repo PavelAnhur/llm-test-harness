@@ -10,11 +10,6 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:properties": "vitest run tests/properties.spec.ts",
-    "test:multi-run": "vitest run tests/multi-run.spec.ts",
-    "test:adversarial": "vitest run tests/adversarial.spec.ts",
-    "test:db": "vitest run tests/db-verification.spec.ts",
-    "test:allure": "vitest run --reporter=allure-vitest/reporter",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
     "allure:serve": "allure serve allure-results",

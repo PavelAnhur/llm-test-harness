@@ -34,7 +34,6 @@ rather than a single run.
 | Property assertions  | JSON schema, required and forbidden keys, numeric ranges, enum membership |
 | Pass-rate thresholds | Multi-run execution with a configurable success floor                     |
 | Adversarial inputs   | Prompt injection, boundary inputs, empty input, role confusion            |
-| SQL verification     | Persisted state in the database matches what the response claims          |
 | Structured reporting | Allure reports with pass rate as a parameter, grouped by feature          |
 
 ## What this is not
@@ -44,9 +43,9 @@ rather than a single run.
 
 - Not a benchmark. No scores against a public leaderboard.
 
-- Not a replacement for human review. LLM-as-a-judge is used for some
-  checks, calibrated against a hand-labeled sample, and its limits are
-  documented in the tests.
+- Not a replacement for human review. The property assertions and
+  adversarial detectors are rules, not judgment calls. LLM-as-a-judge
+  is on the Week 2 roadmap.
 
 ## Quick start
 
@@ -65,8 +64,6 @@ npm run allure:open
 npm run test:adversarial
 ```
 
-#
-
 ## Project structure
 
 <details>
@@ -76,22 +73,24 @@ npm run test:adversarial
 playwright-llm-tests/
 ├── src/
 │   ├── llm/
-│   │   └── client.ts            # thin wrapper around the LLM API
+│   │   └── client.ts              # provider-agnostic LLM wrapper
 │   ├── assertions/
-│   │   ├── schema.ts            # JSON schema validation helpers
-│   │   ├── range.ts             # numeric and length bounds
-│   │   └── forbidden.ts         # content the response must not contain
+│   │   ├── schema.ts              # JSON schema validation
+│   │   ├── range.ts               # numeric range checks
+│   │   ├── shape.ts               # single-word and line-count checks
+│   │   └── safety.ts              # prompt-leak and injection detectors
 │   └── harness/
-│       ├── multi-run.ts         # run N times, compute pass rate
-│       └── thresholds.ts        # gate on pass rate, not single run
+│       ├── multi-run.ts           # run N times, compute pass rate
+│       ├── thresholds.ts          # gate on pass rate
+│       └── allure.ts              # label, attachResult, note helpers
 ├── tests/
-│   ├── properties.spec.ts       # structural assertions
-│   ├── multi-run.spec.ts        # pass-rate thresholds
-│   ├── adversarial.spec.ts      # prompt injection and boundary cases
-│   └── db-verification.spec.ts  # SQL checks after generation
-├── fixtures/
-│   └── prompts.json             # reusable prompts with expected properties
-├── notes.md                     # week-by-week reflection
+│   ├── day1-exact-match.test.ts   # exact-match failures
+│   ├── day2-properties.test.ts    # property-based assertions
+│   ├── day3-multi-run.test.ts     # pass-rate thresholds
+│   └── day4-adversarial.test.ts   # prompt injection, role confusion
+├── scripts/
+│   └── prepare-history.mjs        # preserve Allure trend across runs
+├── notes.md                       # week-by-week reflection
 └── package.json
 ```
 
@@ -108,13 +107,14 @@ playwright-llm-tests/
 
 ## Tech stack
 
-**TypeScript** — types matter more than usual when your subject is shape-shifting text.\
-**Vitest** — unit-style tests for assertions, harness logic, and small helpers.\
-**Playwright Test** — the driver for anything that touches an API, a page, or a streaming endpoint.\
-**Allure** — the report format. Pass rate appears as a parameter, not
-as pass/fail.\
-**zod** — schema validation for structured LLM responses.\
-**Postgres client** — for verifying persisted state after generation.
+- **TypeScript** — types matter more than usual when your subject is
+  shape-shifting text.
+- **Vitest** — the test runner and assertion framework.
+- **Allure** — the report format. Pass rate appears as an attachment,
+  not as pass/fail.
+- **zod** — schema validation for structured LLM responses.
+- **Ollama** — the local model runtime. `llama3.2:3b` is the default
+  model.
 
 ## Running the tests in CI
 

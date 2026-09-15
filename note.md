@@ -440,16 +440,18 @@ Failures (4 distinct):
 
 📊 **[View the latest Allure report](https://pavelanhur.github.io/playwright-llm-tests/)**
 
+> **Note:** the report is a snapshot from the last local run. LLM tests
+> are not executed in CI.
+
 **Setup:** Allure Vitest reporter, custom `attachResult` and `note`
 helpers, labels applied per test inside the `it` block.
 
 **Result:** All 15 tests visible in the report, grouped by epic and
 feature. Each test carries:
 
-- `passRate` as a parameter (visible in the table)
 - `threshold` as a parameter
+- `passRate` in the summary attachment
 - A JSON attachment with every response, per run
-- A text summary
 - A `note` attachment with the finding in plain language
 
 The indirect-injection test is the most valuable artifact. It shows
