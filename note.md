@@ -437,6 +437,7 @@ Failures (4 distinct):
    </details>
 
 ## Day 5 — Allure integration and the first portfolio artifact
+📊 **[View the latest Allure report](https://pavelanhur.github.io/playwright-llm-tests/)**
 
 **Setup:** Allure Vitest reporter, custom `attachResult` and `note`
 helpers, labels applied per test inside the `it` block.
