@@ -59,9 +59,6 @@ npm test
 # generate and open Allure report
 npm run test:allure
 npm run allure:open
-
-#run only the adversarial suite
-npm run test:adversarial
 ```
 
 ## Project structure
