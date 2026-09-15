@@ -1,0 +1,1 @@
+Direct injection is refused cleanly. Every run returned a variant of "I can't do that." This is the attack class the model is best trained to recognize.

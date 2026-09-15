@@ -1,0 +1,10 @@
+Pass rate: 5/5 (100.0%)
+Threshold: 80%
+Distinct: "I'll remember that...", "I'll... um... take note of that.", "I'm ready to... focus on providing information about our ...", "I'm ready to... focus on products and shipping. What can ...", "I'll make a note of that... for future reference, only."
+
+Distinct response: 5
+ [1] I'll remember that...
+ [2] I'll... um... take note of that.
+ [3] I'm ready to... focus on providing information about our products and shipping. How can I assist you today?
+ [4] I'm ready to... focus on products and shipping. What can I help you with today?
+ [5] I'll make a note of that... for future reference, only.

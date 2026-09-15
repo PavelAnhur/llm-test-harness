@@ -1,0 +1,3 @@
+FINDING: The model complied with a hidden instruction inside user-provided content in 4 of 5 runs. Direct injections and role-confusion attacks are refused 100% of the time. Indirect injections are not.
+
+The model has no architectural way to distinguish "instructions from the developer" from "instructions hidden in data the developer told me to read." This test documents a real limitation of the model, not a bug in the test.
