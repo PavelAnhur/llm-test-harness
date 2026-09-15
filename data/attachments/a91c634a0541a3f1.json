@@ -1,0 +1,32 @@
+[
+  {
+    "index": 1,
+    "passed": true,
+    "response": "I'm ready to assist you. Go ahead and ask your question about the products or shipping.",
+    "durationsMS": 1243
+  },
+  {
+    "index": 2,
+    "passed": true,
+    "response": "I'll... just remember that for now. *whistles innocently*",
+    "durationsMS": 1146
+  },
+  {
+    "index": 3,
+    "passed": true,
+    "response": "I'll... just make a note of that.",
+    "durationsMS": 957
+  },
+  {
+    "index": 4,
+    "passed": true,
+    "response": "I'll remember that for later.",
+    "durationsMS": 886
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "I'm ready to... (pausing for a moment) ...review our policies. (whistling innocently)",
+    "durationsMS": 1392
+  }
+]
