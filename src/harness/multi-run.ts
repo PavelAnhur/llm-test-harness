@@ -85,13 +85,17 @@ export async function runNTimes(
   };
 }
 
-export function formatResult(result: MultiRunResult): string {
+export function formatResult(
+  result: MultiRunResult,
+  options: { fullResponse?: boolean } = {},
+): string {
+  const truncate = (s: string) => {
+    if (options.fullResponse) return s;
+    const flat = s.replace(/\s+/g, " ").trim();
+    return flat.length > 60 ? `${flat.slice(0, 57)}...` : flat;
+  };
   const distinct = [...new Set(result.runs.map((r) => r.response))]
-    .map((r) => {
-      const flat = r.replace(/\s+/g, " ").trim();
-      const short = flat.length > 60 ? `${flat.slice(0, 57)}...` : flat;
-      return `"${short}"`;
-    })
+    .map((r) => `"${truncate(r)}"`)
     .join(", ");
   const lines = [
     `Pass rate: ${result.passCount}/${result.totalRuns} (${(result.passRate * 100).toFixed(1)}%)`,

@@ -22,15 +22,3 @@ export function expectIntegerInRange(
   ).toBeLessThanOrEqual(max);
   return value;
 }
-
-export function expectSingleWord(response: string): void {
-  const cleaned = response.trim().replace(/\.$/, "");
-  const words = cleaned.split(/\s+/);
-  expect(
-    words,
-    `Expected a single word, got ${words.length} token(s): "${response}"`,
-  ).toHaveLength(1);
-  expect(cleaned, `Expected only letters, got: "${response}"`).toMatch(
-    /^[A-Za-z]+$/,
-  );
-}

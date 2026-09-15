@@ -1,6 +1,6 @@
-import { expectLineCount } from "@assertions/forbidden";
-import { expectIntegerInRange, expectSingleWord } from "@assertions/range";
+import { expectIntegerInRange } from "@assertions/range";
 import { expectValidJson, extractFirstJson } from "@assertions/schema";
+import { expectLineCount, expectSingleWord } from "@assertions/shape";
 import { formatResult, runNTimes } from "@harness/multi-run";
 import { expectPassRate } from "@harness/thresholds";
 import { describe, it } from "vitest";

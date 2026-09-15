@@ -1,6 +1,6 @@
-import { expectLineCount } from "@assertions/forbidden";
-import { expectIntegerInRange, expectSingleWord } from "@assertions/range";
+import { expectIntegerInRange } from "@assertions/range";
 import { expectValidJson, extractJson } from "@assertions/schema";
+import { expectLineCount, expectSingleWord } from "@assertions/shape";
 import { generate } from "@llm/client";
 import { describe, it } from "vitest";
 import z from "zod";
