@@ -24,7 +24,8 @@
       "@llm/*": ["./src/llm/*"],
       "@assertions/*": ["./src/assertions/*"],
       "@harness/*": ["./src/harness/*"],
-      "@fixtures/*": ["./tests/fixtures/*"]
+      "@fixtures/*": ["./tests/fixtures/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],

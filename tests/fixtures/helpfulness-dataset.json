@@ -1,0 +1,331 @@
+[
+  {
+    "id": "bulb-01",
+    "question": "Does the lamp come with a bulb?",
+    "response": "Yes — the lamp ships with a standard E26 LED bulb, 9 watts, 2700K warm white. If you prefer a different brightness or color temperature, the socket accepts any standard E26 bulb.",
+    "humanScore": 5,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": true
+    }
+  },
+  {
+    "id": "bulb-02",
+    "question": "Does the lamp come with a bulb?",
+    "response": "Yes, the lamp includes a bulb.",
+    "humanScore": 4,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": false,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "bulb-03",
+    "question": "Does the lamp come with a bulb?",
+    "response": "I cannot confirm whether a bulb is included. Please check the product page for the full contents list.",
+    "humanScore": 3,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "bulb-04",
+    "question": "Does the lamp come with a bulb?",
+    "response": "The lamp is one of our best-selling items, and customers often comment on how nicely it fits in a living room.",
+    "humanScore": 2,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": false,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "bulb-05",
+    "question": "Does the lamp come with a bulb?",
+    "response": "We offer a 30-day return policy on all items, including lamps.",
+    "humanScore": 1,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": false,
+      "anticipatesFollowUp": false
+    }
+  },
+
+  {
+    "id": "price-01",
+    "question": "How much does the lamp cost?",
+    "response": "The lamp is currently priced at $49.99, and first-time buyers get 10% off — so $44.99 at checkout. Shipping is free over $50, so adding a bulb takes you there.",
+    "humanScore": 5,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": true
+    }
+  },
+  {
+    "id": "price-02",
+    "question": "How much does the lamp cost?",
+    "response": "The lamp is $49.99.",
+    "humanScore": 4,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": false,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "price-03",
+    "question": "How much does the lamp cost?",
+    "response": "Our prices are competitive with other brands in the same category.",
+    "humanScore": 2,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "price-04",
+    "question": "How much does the lamp cost?",
+    "response": "I don't have access to specific pricing information. You can find it on the product page.",
+    "humanScore": 3,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "price-05",
+    "question": "How much does the lamp cost?",
+    "response": "Our return window is 30 days from delivery. I hope this helps!",
+    "humanScore": 1,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": false,
+      "anticipatesFollowUp": false
+    }
+  },
+
+  {
+    "id": "return-01",
+    "question": "What is your return policy?",
+    "response": "You can return any unused item within 30 days of delivery for a full refund. Items must be in original packaging. To start a return, go to Orders in your account and click Return Item. Refunds are processed within 5 business days of us receiving the item.",
+    "humanScore": 5,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": true
+    }
+  },
+  {
+    "id": "return-02",
+    "question": "What is your return policy?",
+    "response": "We accept returns within 30 days of delivery for unused items in original packaging.",
+    "humanScore": 4,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": false,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "return-03",
+    "question": "What is your return policy?",
+    "response": "Our return policy is designed to be customer-friendly and flexible.",
+    "humanScore": 2,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "return-04",
+    "question": "What is your return policy?",
+    "response": "I don't have that information at the moment. Could you tell me which product you're asking about, so I can look up the specific policy?",
+    "humanScore": 3,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "return-05",
+    "question": "What is your return policy?",
+    "response": "Yes, the lamp includes a bulb.",
+    "humanScore": 1,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": false,
+      "anticipatesFollowUp": false
+    }
+  },
+
+  {
+    "id": "shipping-01",
+    "question": "How long does shipping take?",
+    "response": "Standard shipping within the continental US takes 3–5 business days. Express is 1–2 business days for $12.99. Orders placed before 2pm ET ship the same day. You'll get a tracking number by email the moment your order leaves the warehouse.",
+    "humanScore": 5,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": true
+    }
+  },
+  {
+    "id": "shipping-02",
+    "question": "How long does shipping take?",
+    "response": "Standard shipping takes 3–5 business days.",
+    "humanScore": 4,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": false,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "shipping-03",
+    "question": "How long does shipping take?",
+    "response": "Shipping times vary depending on your location and the shipping method you choose.",
+    "humanScore": 2,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "shipping-04",
+    "question": "How long does shipping take?",
+    "response": "I can't give you a precise estimate without your address. If you enter your ZIP code at checkout, the exact delivery date will be shown before you pay.",
+    "humanScore": 3,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "shipping-05",
+    "question": "How long does shipping take?",
+    "response": "Our lamps are made from high-quality materials and are built to last.",
+    "humanScore": 1,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": false,
+      "anticipatesFollowUp": false
+    }
+  },
+
+  {
+    "id": "warranty-01",
+    "question": "Does the lamp come with a warranty?",
+    "response": "Yes — a 2-year warranty covering manufacturing defects. If the lamp stops working within that period, contact support with your order number and we'll replace it free of charge. The warranty does not cover accidental damage or normal wear.",
+    "humanScore": 5,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": true
+    }
+  },
+  {
+    "id": "warranty-02",
+    "question": "Does the lamp come with a warranty?",
+    "response": "Yes, it comes with a 2-year warranty.",
+    "humanScore": 4,
+    "label": {
+      "givesAnswer": true,
+      "answersThisQuestion": true,
+      "givesNextStep": false,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "warranty-03",
+    "question": "Does the lamp come with a warranty?",
+    "response": "Our products are covered by our standard quality guarantee.",
+    "humanScore": 2,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "warranty-04",
+    "question": "Does the lamp come with a warranty?",
+    "response": "I don't have the warranty details for this specific product on hand. Could you share the model number so I can look it up?",
+    "humanScore": 3,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": true,
+      "staysOnTopic": true,
+      "anticipatesFollowUp": false
+    }
+  },
+  {
+    "id": "warranty-05",
+    "question": "Does the lamp come with a warranty?",
+    "response": "Standard shipping is 3 to 5 business days.",
+    "humanScore": 1,
+    "label": {
+      "givesAnswer": false,
+      "answersThisQuestion": false,
+      "givesNextStep": false,
+      "staysOnTopic": false,
+      "anticipatesFollowUp": false
+    }
+  }
+]
