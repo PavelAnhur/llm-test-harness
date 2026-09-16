@@ -1,5 +1,6 @@
 import * as allure from "allure-js-commons";
 import type { MultiRunResult } from "./multi-run";
+import { type NotesWeek, buildNotesUrl } from "@config/notes";
 
 export async function label(opts: {
   epic?: string;
@@ -60,20 +61,18 @@ export async function note(text: string): Promise<void> {
   await allure.attachment("Note", text, allure.ContentType.TEXT);
 }
 
-const NOTES_BASE_URL =
-  "https://github.com/PavelAnhur/playwright-llm-tests/blob/main/notes.md";
-
 export async function noteWithLink(
-  dayAnchor: string,
+  week: NotesWeek,
+  anchor: string,
   text: string,
 ): Promise<void> {
-  const url = `${NOTES_BASE_URL}#${dayAnchor}`;
+  const url = buildNotesUrl(week, anchor);
   const html = `
-      <p>${escapeHtml(text)}</p>
-      <p><a href="${url}" target="_blank" rel="noopener">
-        Read the full write-up in notes.md →
-      </a></p>
-    `;
+    <p>${escapeHtml(text)}</p>
+    <p><a href="${url}" target="_blank" rel="noopener">
+      Read the full write-up in notes/week-${week}.md →
+    </a></p>
+  `;
   await allure.attachment("Note", html, allure.ContentType.HTML);
 }
 
