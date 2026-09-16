@@ -475,7 +475,7 @@ dataset. The rubric was rewritten four times. The judge model was
 upgraded from llama3.2:3b to qwen2.5:7b. The results:
 
 | Round | Model | Rubric change              | Exact | Within-one | MAE  |
-|-------|-------|----------------------------|-------|------------|------|
+| ----- | ----- | -------------------------- | ----- | ---------- | ---- |
 | 1     | 3B    | initial (lamp-specific)    | 32%   | 60%        | 1.28 |
 | 2     | 3B    | generic A–D criteria       | 40%   | 80%        | 0.80 |
 | 3     | 3B    | + E (next step)            | 48%   | 80%        | 0.72 |
@@ -507,6 +507,7 @@ one. It is reliable for direct answers and clearly off-topic
 responses. It is unreliable for redirects.
 
 The correct use of this judge is:
+
 - Run it on responses.
 - Treat exact agreement as a signal, not ground truth.
 - Flag any response the judge scores 1 for human review, because

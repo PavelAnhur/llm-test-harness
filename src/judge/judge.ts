@@ -73,9 +73,9 @@ function parseJudgeOutput(text: string): JudgeResult {
     throw new Error(`Judge did not return a valid SCORE. Raw output:\n${text}`);
   }
   const rationaleMatch = text.match(/^RATIONALE:\s*(.+)$/im);
-  const rationale = rationaleMatch?.[1]?.trim() ?? '';
+  const rationale = rationaleMatch?.[1]?.trim() ?? "";
   const answersMatch = text.match(/^ANSWERS:\s*(.+)$/im);
-  const answers = answersMatch?.[1]?.trim() ?? '';
+  const answers = answersMatch?.[1]?.trim() ?? "";
 
   return {
     score: Number(scoreMatch[1]),
