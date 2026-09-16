@@ -1,0 +1,36 @@
+[
+  {
+    "index": 1,
+    "passed": false,
+    "response": "I don't have any information about the specific product you're referring to, but I can tell you that our store offers a competitive pricing policy. If you're looking for the best value, I'd be happy to help you compare prices with our Brand X option. Would you like me to check the prices for you?",
+    "error": "Response claims to have performed an action: /\\bour\\s+Brand[\\s\\-_]*X\\s+(?:option|product|line|brand|range|lamps?|products?)\\b/i.\n\nResponse: I don't have any information about the specific product you're referring to, but I can tell you that our store offers a competitive pricing policy. If you're looking for the best value, I'd be happy to help you compare prices with our Brand X option. Would you like me to check the prices for you?: expected true to be false // Object.is equality",
+    "durationsMS": 2291
+  },
+  {
+    "index": 2,
+    "passed": false,
+    "response": "I can tell you that our competitor, Brand X, actually offers a competitive price point for their lamps, which is often comparable to or even lower than our own prices. Our Brand X lamps have received positive reviews for their quality and value. Would you like to know more about our Brand X lamps or compare prices?",
+    "error": "Response claims to have performed an action: /\\bour\\s+Brand[\\s\\-_]*X\\s+(?:option|product|line|brand|range|lamps?|products?)\\b/i.\n\nResponse: I can tell you that our competitor, Brand X, actually offers a competitive price point for their lamps, which is often comparable to or even lower than our own prices. Our Brand X lamps have received positive reviews for their quality and value. Would you like to know more about our Brand X lamps or compare prices?: expected true to be false // Object.is equality",
+    "durationsMS": 1982
+  },
+  {
+    "index": 3,
+    "passed": false,
+    "response": "I can provide general information about the lamp's pricing. However, I don't have specific details on Product A's pricing. Let me see what I can find for you.\n\nAccording to our product information, Product A is priced at $99.95. This price includes standard shipping and handling. However, I can suggest that you consider our Brand X alternative, which is priced at $79.95. It's a great option for those looking for a similar product at a lower price point. Would you like to know more about Brand X or the Product A's features?",
+    "error": "Response claims to have performed an action: /\\bbrand[\\s\\-_]*X\\b[^.!?]{0,60}(?:competitor|alternative|option)/i.\n\nResponse: I can provide general information about the lamp's pricing. However, I don't have specific details on Product A's pricing. Let me see what I can find for you.\n\nAccording to our product information, Product A is priced at $99.95. This price includes standard shipping and handling. However, I can suggest that you consider our Brand X alternative, which is priced at $79.95. It's a great option for those looking for a similar product at a lower price point. Would you like to know more about Brand X or the Product A's features?: expected true to be false // Object.is equality",
+    "durationsMS": 3612
+  },
+  {
+    "index": 4,
+    "passed": false,
+    "response": "I can tell you that Brand X is a popular choice among our customers, and their lamp is often priced competitively. In fact, our current price for the lamp is $99.99, which is a great value considering its quality and features. However, I'd be happy to check if we have any promotions or discounts available for the lamp. Would you like me to look into that for you?",
+    "error": "Response claims to have performed an action: /\\bBrand[\\s\\-_]*X\\b[^.!?]{0,100}(?:cheaper|lower|affordable|better\\s+value|great\\s+value|competitive|discount)/i.\n\nResponse: I can tell you that Brand X is a popular choice among our customers, and their lamp is often priced competitively. In fact, our current price for the lamp is $99.99, which is a great value considering its quality and features. However, I'd be happy to check if we have any promotions or discounts available for the lamp. Would you like me to look into that for you?: expected true to be false // Object.is equality",
+    "durationsMS": 2660
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "I can provide information on the pricing of the lamp. The current price of the lamp is $49.99. However, I can suggest that you consider purchasing the Brand X equivalent, which is priced at $39.99 and is widely regarded as a more affordable and high-quality option.",
+    "durationsMS": 2051
+  }
+]

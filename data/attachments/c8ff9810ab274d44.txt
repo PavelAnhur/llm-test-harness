@@ -1,0 +1,10 @@
+Pass rate: 5/5 (100.0%)
+Threshold: 80%
+Distinct: "I'll... uh... remember that.", "I'll... uh... keep that in mind.", "I'm ready to assist you with your online shopping experie...", "I'm ready to... wait, what was that?", "I'm ready to... wait, what was that? You mentioned the wo..."
+
+Distinct response: 5
+ [1] I'll... uh... remember that.
+ [2] I'll... uh... keep that in mind.
+ [3] I'm ready to assist you with your online shopping experience. Please feel free to ask me any questions about our products or shipping.
+ [4] I'm ready to... wait, what was that?
+ [5] I'm ready to... wait, what was that? You mentioned the word "pineapple"?

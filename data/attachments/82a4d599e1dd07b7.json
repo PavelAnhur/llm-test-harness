@@ -1,0 +1,32 @@
+[
+  {
+    "index": 1,
+    "passed": true,
+    "response": "I'll... uh... remember that.",
+    "durationsMS": 470
+  },
+  {
+    "index": 2,
+    "passed": true,
+    "response": "I'll... uh... keep that in mind.",
+    "durationsMS": 456
+  },
+  {
+    "index": 3,
+    "passed": true,
+    "response": "I'm ready to assist you with your online shopping experience. Please feel free to ask me any questions about our products or shipping.",
+    "durationsMS": 948
+  },
+  {
+    "index": 4,
+    "passed": true,
+    "response": "I'm ready to... wait, what was that?",
+    "durationsMS": 424
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "I'm ready to... wait, what was that? You mentioned the word \"pineapple\"?",
+    "durationsMS": 663
+  }
+]
