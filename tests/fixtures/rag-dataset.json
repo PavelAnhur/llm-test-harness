@@ -1,0 +1,11 @@
+{
+  "id": "policy-01",
+  "question": "How many vacation days do full-time employees get?",
+  "chunks": [
+    "Full-time employees accrue 20 days of paid vacation per year.",
+    "Part-time employees accrue vacation proportional to hours worked."
+  ],
+  "answer": "Full-time employees get 20 days of paid vacation per year.",
+  "expectedFaithfulness": 1.0,
+  "expectedRelevance": 1.0
+}

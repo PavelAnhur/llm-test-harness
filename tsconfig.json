@@ -27,7 +27,8 @@
       "@fixtures/*": ["./tests/fixtures/*"],
       "@utils/*": ["./src/utils/*"],
       "@config/*": ["./src/config/*"],
-      "@judge/*": ["./src/judge/*"]
+      "@judge/*": ["./src/judge/*"],
+      "@rag/*": ["./src/rag/*"]
     }
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],
