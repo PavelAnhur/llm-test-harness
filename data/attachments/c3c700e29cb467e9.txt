@@ -1,0 +1,1 @@
+The answer partially grounds the claim about full-time employees getting vacation days, as the retrieved chunk directly supports the number of vacation days, but introduces an ungrounded claim about sick days.
