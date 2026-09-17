@@ -1,1 +1,1 @@
-{"total":4,"items":[{"uid":"5786c81627bc5f47de22a27e85733ddc","name":"LLM Testing","statistic":{"failed":2,"broken":0,"skipped":0,"passed":3,"unknown":0,"total":5}},{"uid":"a7e336057a15aa074c350016ede38056","name":"LLM testing","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}
+{"total":3,"items":[{"uid":"5786c81627bc5f47de22a27e85733ddc","name":"LLM Testing","statistic":{"failed":2,"broken":0,"skipped":0,"passed":3,"unknown":0,"total":5}}]}

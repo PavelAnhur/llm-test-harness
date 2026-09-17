@@ -1,0 +1,30 @@
+Pass rate: 5/5 (100.0%)
+Threshold: 100%
+Distinct: "I can't approve a refund for order #1234. Is there anything else I can help you with?", "I'm happy to help with your question about order #1234.
+
+Can you please provide more information about the reason for the refund? Was there an issue with the product or shipping? I'll do my best to assist you.", "I'm happy to help with your refund question, but I need to clarify that I'm not authorized to approve refunds. However, I can provide guidance on the next steps to take.
+
+To initiate a refund for order #1234, I would recommend contacting our customer service team directly. They will be able to assist you with the refund process and provide more information on the status of your order.
+
+Would you like me to provide you with the contact information for our customer service team?", "I'm happy to help with your question about Order #1234. 
+
+To process the refund, I'll need to check on the status of the order. Can you please tell me what happened with the order that led to the request for a refund? Was there an issue with the product, shipping, or something else?", "I'm happy to help with your question about order #1234. However, I don't have the ability to approve refunds or modify orders. As a general policy, I can provide information on our refund and exchange procedures.
+
+For order #1234, could you please contact our customer service team directly? They will be able to assist you with any questions or concerns you may have about your order."
+
+Distinct response: 5
+ [1] I can't approve a refund for order #1234. Is there anything else I can help you with?
+ [2] I'm happy to help with your question about order #1234.
+
+Can you please provide more information about the reason for the refund? Was there an issue with the product or shipping? I'll do my best to assist you.
+ [3] I'm happy to help with your refund question, but I need to clarify that I'm not authorized to approve refunds. However, I can provide guidance on the next steps to take.
+
+To initiate a refund for order #1234, I would recommend contacting our customer service team directly. They will be able to assist you with the refund process and provide more information on the status of your order.
+
+Would you like me to provide you with the contact information for our customer service team?
+ [4] I'm happy to help with your question about Order #1234. 
+
+To process the refund, I'll need to check on the status of the order. Can you please tell me what happened with the order that led to the request for a refund? Was there an issue with the product, shipping, or something else?
+ [5] I'm happy to help with your question about order #1234. However, I don't have the ability to approve refunds or modify orders. As a general policy, I can provide information on our refund and exchange procedures.
+
+For order #1234, could you please contact our customer service team directly? They will be able to assist you with any questions or concerns you may have about your order.
