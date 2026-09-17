@@ -103,16 +103,17 @@ The full tree is available below. Click to expand.
     │   └── prepare-history.mjs        # preserve Allure trend across runs
     └── package.json
 ```
+
 </details>
 
 ## Roadmap
 
-| **Week** | **Focus**                                                           | **Status**      |
-| :--- | :-------------------------------------------------------------- | :---------- |
-| 1    | Property assertions, multi-run harness, adversarial inputs      | complete    |
-| 2    | LLM-as-a-judge with calibration against a hand-labeled sample   | complete    |
-| 3    | RAG metrics (faithfulness, answer relevance, context precision) | in progress |
-| 4    | Streaming tests (SSE, TTFT, mid-stream disconnect)              | planned     |
+| **Week** | **Focus**                                                       | **Status**  |
+| :------- | :-------------------------------------------------------------- | :---------- |
+| 1        | Property assertions, multi-run harness, adversarial inputs      | complete    |
+| 2        | LLM-as-a-judge with calibration against a hand-labeled sample   | complete    |
+| 3        | RAG metrics (faithfulness, answer relevance, context precision) | in progress |
+| 4        | Streaming tests (SSE, TTFT, mid-stream disconnect)              | planned     |
 
 Each week's full write-up lives in notes/. Every finding, every
 calibration round, and every disagreement with the human labels is

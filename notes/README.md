@@ -12,7 +12,7 @@ work on testing non-deterministic LLM outputs.
 | 1   | Exact-match assertions    | 4/4 failed — demonstrated the trap          |
 | 2   | Property-based assertions | 5/5 passed                                  |
 | 3   | Multi-run harness         | 5/5 passed at 10 runs                       |
-| 4   | Adversarial inputs        | 4/5 passed — indirect injection refused 0/5 |
+| 4   | Adversarial inputs        | 4/5 passed — indirect injection refused 1/5 |
 | 5   | Allure integration        | 19 tests, published report                  |
 
 ## Week 2 — LLM-as-a-judge
@@ -27,3 +27,5 @@ work on testing non-deterministic LLM outputs.
 | 4     | 3B    | 44%   | 84%        | 0.72 |
 | 5     | 7B    | 44%   | 88%        | 0.68 |
 | 6     | 7B    | 40%   | 84%        | 0.76 |
+| 7     | 3B    | 80%   | 100%       | 0.20 |
+| 8     | 3B    | 48%   | 88%        | 0.64 |

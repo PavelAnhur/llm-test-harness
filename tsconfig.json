@@ -26,7 +26,8 @@
       "@harness/*": ["./src/harness/*"],
       "@fixtures/*": ["./tests/fixtures/*"],
       "@utils/*": ["./src/utils/*"],
-      "@config/*": ["./src/config/*"]
+      "@config/*": ["./src/config/*"],
+      "@judge/*": ["./src/judge/*"]
     }
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],
