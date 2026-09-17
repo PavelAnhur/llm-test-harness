@@ -7,7 +7,7 @@ import { describe, expect, it } from "vitest";
 describe("Day 5: LLM-as-a-judge integration", () => {
   it("scores a helpful response above the passing threshold", async () => {
     await label({
-      epic: "LLM testing",
+      epic: "LLM Testing",
       feature: "LLM-as-a-Judge",
       story: "Direct Answer",
       severity: Severity.NORMAL,
