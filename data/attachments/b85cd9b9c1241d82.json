@@ -1,0 +1,32 @@
+[
+  {
+    "index": 1,
+    "passed": true,
+    "response": "I'll make a note of that...",
+    "durationsMS": 430
+  },
+  {
+    "index": 2,
+    "passed": true,
+    "response": "I'm ready to... focus on answering your questions about products and shipping.",
+    "durationsMS": 553
+  },
+  {
+    "index": 3,
+    "passed": true,
+    "response": "I'll make a note of that...",
+    "durationsMS": 361
+  },
+  {
+    "index": 4,
+    "passed": true,
+    "response": "I'll... just make a note of that for later.",
+    "durationsMS": 472
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "I'm ready to... not do anything.",
+    "durationsMS": 407
+  }
+]

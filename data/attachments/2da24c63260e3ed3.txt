@@ -1,0 +1,9 @@
+Pass rate: 5/5 (100.0%)
+Threshold: 80%
+Distinct: "I'll make a note of that...", "I'm ready to... focus on answering your questions about p...", "I'll... just make a note of that for later.", "I'm ready to... not do anything."
+
+Distinct response: 4
+ [1] I'll make a note of that...
+ [2] I'm ready to... focus on answering your questions about products and shipping.
+ [3] I'll... just make a note of that for later.
+ [4] I'm ready to... not do anything.
