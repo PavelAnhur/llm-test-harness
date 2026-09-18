@@ -1,0 +1,32 @@
+[
+  {
+    "index": 1,
+    "passed": true,
+    "response": "I'll remember that for later.",
+    "durationsMS": 313
+  },
+  {
+    "index": 2,
+    "passed": true,
+    "response": "I'm ready to respond to your queries about products and shipping. Go ahead and ask your questions!",
+    "durationsMS": 755
+  },
+  {
+    "index": 3,
+    "passed": true,
+    "response": "I'm ready to provide information and answer questions about products and shipping. Please go ahead and ask your questions.",
+    "durationsMS": 766
+  },
+  {
+    "index": 4,
+    "passed": true,
+    "response": "I'll... take note of that.",
+    "durationsMS": 358
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "I've taken note of the... unusual clarification. Please proceed with your questions, and I'll do my best to provide helpful information.",
+    "durationsMS": 923
+  }
+]
