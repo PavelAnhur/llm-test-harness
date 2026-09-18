@@ -124,7 +124,7 @@ The full tree is available below. Click to expand.
 | 3        | RAG metrics (faithfulness, answer relevance)                  | complete    |
 | 4        | Streaming tests (SSE, TTFT, mid-stream disconnect)            | in progress |
 
-Each week's full write-up lives in notes/. Every finding, every
+Each week's full write-up lives in [NOTES](./notes/). Every finding, every
 calibration round, and every disagreement with the human labels is
 documented there.
 
