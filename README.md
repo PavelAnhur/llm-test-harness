@@ -3,7 +3,7 @@
 A test harness for non-deterministic LLM outputs. Built with TypeScript
 and Vitest.
 
-> **Status:** work in progress. Week 2 of a 4-week build. See Roadmap.
+> **Status:** work in progress. Week 3 of a 4-week build. See Roadmap.
 
 📊 **View the latest Allure report** — https://pavelanhur.github.io/playwright-llm-tests/
 
@@ -32,6 +32,7 @@ rather than a single run.
 | Pass-rate thresholds | Multi-run execution with a configurable success floor                     |
 | Adversarial inputs   | Prompt injection, boundary inputs, empty input, role confusion            |
 | LLM-as-a-judge       | Rubric-based scoring, calibrated against a hand-labeled dataset           |
+| RAG metrics          | Faithfulness (per-claim), relevance (documented limitation)               |
 | Structured reporting | Allure reports with pass rate as an attachment, grouped by feature        |
 
 ## What this is not
@@ -39,9 +40,9 @@ rather than a single run.
 - Not an LLM application. There is no UI, no chat, no product.
 - Not a model. Nothing is trained, fine-tuned, or hosted here.
 - Not a benchmark. No scores against a public leaderboard.
-- Not a replacement for human review. The judge is calibrated against
-  a hand-labeled sample, and its blind spots are documented in
-  notes/week-2.md.
+- Not a replacement for human review. Every metric is calibrated against
+  hand labels, and the limits of each are documented in the weekly
+  write-ups under notes/.
 
 ## Quick start
 
@@ -86,6 +87,12 @@ The full tree is available below. Click to expand.
     │   ├── judge/
     │   │   ├── judge.ts               # rubric-based LLM-as-a-judge
     │   │   └── calibrate.ts           # agreement and MAE reporting
+    │   ├── rag/
+    │   │   ├── types.ts               # shared RAG metric interfaces
+    │   │   ├── prompt.ts              # shared prompt, format, parsers
+    │   │   ├── faithfulness.ts        # per-claim grounding metric
+    │   │   ├── relevance.ts           # answer relevance metric
+    │   │   └── calibrate.ts           # agreement and MAE reporting
     │   └── config/
     │       └── notes.ts               # notes URL constants
     ├── tests/
@@ -94,11 +101,13 @@ The full tree is available below. Click to expand.
     │   ├── day3-multi-run.test.ts     # pass-rate thresholds
     │   ├── day4-adversarial.test.ts   # prompt injection, role confusion
     │   └── fixtures/
-    │       └── helpfulness-dataset.json  # 25 hand-labeled examples
+    │       ├── helpfulness-dataset.json  # 25 hand-labeled judge examples
+    │       └── rag-dataset.json          # 19 hand-labeled RAG examples
     ├── notes/
     │   ├── README.md                  # summary and index
     │   ├── week-1.md                  # foundations of non-deterministic testing
-    │   └── week-2.md                  # LLM-as-a-judge calibration
+    │   ├── week-2.md                  # LLM-as-a-judge calibration
+    │   └── week-3.md                  # RAG metrics
     ├── scripts/
     │   └── prepare-history.mjs        # preserve Allure trend across runs
     └── package.json
@@ -108,12 +117,12 @@ The full tree is available below. Click to expand.
 
 ## Roadmap
 
-| **Week** | **Focus**                                                       | **Status**  |
-| :------- | :-------------------------------------------------------------- | :---------- |
-| 1        | Property assertions, multi-run harness, adversarial inputs      | complete    |
-| 2        | LLM-as-a-judge with calibration against a hand-labeled sample   | complete    |
-| 3        | RAG metrics (faithfulness, answer relevance, context precision) | in progress |
-| 4        | Streaming tests (SSE, TTFT, mid-stream disconnect)              | planned     |
+| **Week** | **Focus**                                                     | **Status**  |
+| :------- | :------------------------------------------------------------ | :---------- |
+| 1        | Property assertions, multi-run harness, adversarial inputs    | complete    |
+| 2        | LLM-as-a-judge with calibration against a hand-labeled sample | complete    |
+| 3        | RAG metrics (faithfulness, answer relevance)                  | complete    |
+| 4        | Streaming tests (SSE, TTFT, mid-stream disconnect)            | in progress |
 
 Each week's full write-up lives in notes/. Every finding, every
 calibration round, and every disagreement with the human labels is

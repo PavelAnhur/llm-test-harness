@@ -29,3 +29,12 @@ work on testing non-deterministic LLM outputs.
 | 6     | 7B    | 40%   | 84%        | 0.76 |
 | 7     | 3B    | 80%   | 100%       | 0.20 |
 | 8     | 3B    | 48%   | 88%        | 0.64 |
+
+## Week 3 — RAG metrics
+
+[Read Week 3 in full →](./week-3.md)
+
+| Metric       | Exact | Within-0.2 | MAE  | Status                |
+| ------------ | ----- | ---------- | ---- | --------------------- |
+| Faithfulness | 79%   | 100%       | 0.04 | working               |
+| Relevance    | 47%   | 47%        | 0.27 | documented limitation |
