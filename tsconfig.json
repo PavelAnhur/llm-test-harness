@@ -28,7 +28,8 @@
       "@utils/*": ["./src/utils/*"],
       "@config/*": ["./src/config/*"],
       "@judge/*": ["./src/judge/*"],
-      "@rag/*": ["./src/rag/*"]
+      "@rag/*": ["./src/rag/*"],
+      "@stream/*": ["./src/stream/*"]
     }
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],
