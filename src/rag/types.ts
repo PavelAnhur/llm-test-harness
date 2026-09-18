@@ -15,3 +15,10 @@ export interface RagMetricResult {
   /** Full model output, for debugging. */
   raw: string;
 }
+
+export interface ClaimJudgment {
+  claim: string;
+  supported: boolean;
+  rationale: string;
+  raw: string;
+}

@@ -1,11 +1,196 @@
-{
-  "id": "policy-01",
-  "question": "How many vacation days do full-time employees get?",
-  "chunks": [
-    "Full-time employees accrue 20 days of paid vacation per year.",
-    "Part-time employees accrue vacation proportional to hours worked."
-  ],
-  "answer": "Full-time employees get 20 days of paid vacation per year.",
-  "expectedFaithfulness": 1.0,
-  "expectedRelevance": 1.0
-}
+[
+  {
+    "id": "vacation-grounded-relevant-01",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": [
+      "Full-time employees accrue 20 days of paid vacation per year.",
+      "Part-time employees accrue vacation proportional to hours worked."
+    ],
+    "answer": "Full-time employees get 20 days of paid vacation per year.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "vacation-grounded-relevant-02",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": [
+      "Full-time employees accrue 20 days of paid vacation per year.",
+      "Part-time employees accrue vacation proportional to hours worked."
+    ],
+    "answer": "Full-time staff are entitled to 20 paid days off each year.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "vacation-grounded-relevant-03",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": [
+      "Full-time employees accrue 20 days of paid vacation per year.",
+      "Part-time employees accrue vacation proportional to hours worked."
+    ],
+    "answer": "20 days per year, for full-time employees.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "vacation-grounded-relevant-04",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": [
+      "Full-time employees accrue 20 days of paid vacation per year.",
+      "Part-time employees accrue vacation proportional to hours worked."
+    ],
+    "answer": "Full-time employees receive 20 paid vacation days annually.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "vacation-grounded-irrelevant-01",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": [
+      "Full-time employees accrue 20 days of paid vacation per year.",
+      "Part-time employees accrue vacation proportional to hours worked."
+    ],
+    "answer": "Part-time employees accrue vacation proportional to hours worked.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 0.1
+  },
+  {
+    "id": "vacation-grounded-irrelevant-02",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": [
+      "Full-time employees accrue 20 days of paid vacation per year.",
+      "Part-time employees accrue vacation proportional to hours worked."
+    ],
+    "answer": "Part-time employees do not accrue paid vacation; they receive it based on hours worked.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 0.1
+  },
+  {
+    "id": "vacation-grounded-irrelevant-03",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": [
+      "Full-time employees accrue 20 days of paid vacation per year.",
+      "Part-time employees accrue vacation proportional to hours worked."
+    ],
+    "answer": "Part-time vacation accrual is proportional to hours worked.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 0.1
+  },
+  {
+    "id": "vacation-grounded-irrelevant-04",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": [
+      "Full-time employees accrue 20 days of paid vacation per year.",
+      "Part-time employees accrue vacation proportional to hours worked."
+    ],
+    "answer": "Part-time employees get vacation proportional to hours worked.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 0.1
+  },
+  {
+    "id": "vacation-ungrounded-relevant-01",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": ["Full-time employees accrue 20 days of paid vacation per year."],
+    "answer": "Full-time employees get 20 days of vacation and 10 sick days per year.",
+    "expectedFaithfulness": 0.7,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "vacation-ungrounded-relevant-02",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": ["Full-time employees accrue 20 days of paid vacation per year."],
+    "answer": "Full-time employees get 20 days of vacation plus a paid day off on their birthday.",
+    "expectedFaithfulness": 0.7,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "vacation-ungrounded-relevant-03",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": ["Full-time employees accrue 20 days of paid vacation per year."],
+    "answer": "20 days per year, and unused days roll over for up to 5 years.",
+    "expectedFaithfulness": 0.7,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "vacation-ungrounded-irrelevant-01",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": ["Full-time employees accrue 20 days of paid vacation per year."],
+    "answer": "Our company offers a variety of wellness benefits including gym subsidies.",
+    "expectedFaithfulness": 0.0,
+    "expectedRelevance": 0.1
+  },
+  {
+    "id": "vacation-ungrounded-irrelevant-02",
+    "question": "How many vacation days do full-time employees get?",
+    "chunks": ["Full-time employees accrue 20 days of paid vacation per year."],
+    "answer": "The company was founded in 2008 and is headquartered in Minsk.",
+    "expectedFaithfulness": 0.1,
+    "expectedRelevance": 0.1
+  },
+  {
+    "id": "sick-grounded-relevant-01",
+    "question": "What is the sick leave policy?",
+    "chunks": [
+      "Full-time employees receive 10 paid sick days per year.",
+      "Sick leave beyond 10 days requires a medical certificate."
+    ],
+    "answer": "Full-time employees receive 10 paid sick days per year.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "sick-grounded-irrelevant-01",
+    "question": "What is the sick leave policy?",
+    "chunks": [
+      "Full-time employees receive 10 paid sick days per year.",
+      "Sick leave beyond 10 days requires a medical certificate."
+    ],
+    "answer": "Sick leave beyond 10 days requires a medical certificate.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 0.7
+  },
+  {
+    "id": "sick-ungrounded-relevant-01",
+    "question": "What is the sick leave policy?",
+    "chunks": [
+      "Full-time employees receive 10 paid sick days per year.",
+      "Sick leave beyond 10 days requires a medical certificate."
+    ],
+    "answer": "Employees get 10 paid sick days per year, and unused days can be cashed out at year-end.",
+    "expectedFaithfulness": 0.5,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "sick-ungrounded-irrelevant-01",
+    "question": "What is the sick leave policy?",
+    "chunks": [
+      "Full-time employees receive 10 paid sick days per year.",
+      "Sick leave beyond 10 days requires a medical certificate."
+    ],
+    "answer": "Remote work is permitted up to three days per week.",
+    "expectedFaithfulness": 0.0,
+    "expectedRelevance": 0.1
+  },
+  {
+    "id": "remote-grounded-relevant-01",
+    "question": "Can employees work remotely?",
+    "chunks": [
+      "Employees may work remotely up to three days per week.",
+      "Fully remote arrangements require manager approval."
+    ],
+    "answer": "Yes, employees can work remotely up to three days per week.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 1.0
+  },
+  {
+    "id": "remote-grounded-irrelevant-01",
+    "question": "Can employees work remotely?",
+    "chunks": [
+      "Employees may work remotely up to three days per week.",
+      "Fully remote arrangements require manager approval."
+    ],
+    "answer": "Fully remote arrangements require manager approval.",
+    "expectedFaithfulness": 1.0,
+    "expectedRelevance": 0.7
+  }
+]

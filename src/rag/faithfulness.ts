@@ -1,69 +1,68 @@
 import { generate } from "@llm/client";
-import { JUDGE_SYSTEM_PROMPT, parseRagScore, RESPONSE_FORMAT } from "./prompt";
-import type { RagMetricInput, RagMetricResult } from "./types";
-
-const FAITHFULNESS_RUBRIC = `A claim is grounded if it is supported by the retrieved chunks.
-Support means the chunks contain the information, even if the answer
-uses different words to express it. Paraphrase does not count as
-ungrounded.
-
-A claim is ungrounded if the answer introduces a fact, number, or
-assertion that is not supported by the chunks. Absent support is
-the test; the answer does not need to contradict the chunks to fail.
-
-Examples:
-
-- Chunks say "employees accrue 20 days of vacation per year."
-  Answer says "employees get 20 days of vacation per year."
-  This is grounded. The verb changed; the fact did not. Score 1.0.
-
-- Chunks say "employees accrue 20 days of vacation per year."
-  Answer says "employees get 20 days of vacation plus 10 sick days."
-  This is partially grounded. The vacation claim is supported;
-  the sick-day claim is not. Score 0.5.
-
-- Chunks say "employees accrue 20 days of vacation per year."
-  Answer says "employees do not receive any vacation time."
-  This is ungrounded and contradicts the chunks. Score 0.0.
-
-Score the answer on a 0.0-1.0 scale:
-  1.0 — every claim in the answer is grounded in the chunks
-  0.7 — most claims are grounded; one minor ungrounded claim
-  0.4 — about half the claims are grounded
-  0.1 — most claims are ungrounded, or the answer contradicts the chunks
-  0.0 — the answer introduces facts that directly contradict the chunks`;
+import { JUDGE_SYSTEM_PROMPT, parseClaimJudgment } from "./prompt";
+import type { ClaimJudgment, RagMetricInput, RagMetricResult } from "./types";
 
 export async function judgeFaithfulness(
   input: RagMetricInput,
 ): Promise<RagMetricResult> {
-  const prompt = buildPrompt(input);
-  const { text } = await generate(prompt, {
-    system: JUDGE_SYSTEM_PROMPT,
-    temperature: 0,
-  });
-  return parseRagScore(text);
+  const claims = splitIntoClaims(input.answer);
+  if (claims.length === 0) {
+    return {
+      score: 0,
+      rationale: "Answer contains no claims to evaluate.",
+      raw: "",
+    };
+  }
+  const judgments: ClaimJudgment[] = [];
+  for (const claim of claims) {
+    const prompt = buildPromptPerClaim(input.chunks, claim);
+    const { text } = await generate(prompt, {
+      system: JUDGE_SYSTEM_PROMPT,
+      temperature: 0,
+    });
+    const judgment = parseClaimJudgment(text);
+    judgments.push({ claim, ...judgment });
+  }
+  const supported = judgments.filter((j) => j.supported).length;
+  const score = supported / judgments.length;
+  const rationale = judgments
+    .map((j) => (j.supported ? "✓" : "✗") + " " + j.claim)
+    .join(" | ");
+  return {
+    score,
+    rationale,
+    raw: JSON.stringify(judgments, null, 2),
+  };
 }
 
-function buildPrompt(input: RagMetricInput): string {
-  const chunks = input.chunks.join("\n---\n");
-  return `You are evaluating whether an answer is grounded in retrieved context.
-
-Question:
-"""
-${input.question}
-"""
+function buildPromptPerClaim(chunks: string[], claim: string): string {
+  const chunksString = chunks.join("\n---\n");
+  return `
+  Is the following claim supported by the retrieved chunks?
 
 Retrieved chunks:
 """
-${chunks}
+${chunksString}
 """
 
-Answer to evaluate:
+Claim:
 """
-${input.answer}
+${claim}
 """
 
-${FAITHFULNESS_RUBRIC}
+A claim is supported if the chunks contain the same fact, even if
+the words differ. Paraphrase counts as support. A claim is
+unsupported if the chunks do not contain the fact, even if the
+claim is otherwise reasonable.
 
-${RESPONSE_FORMAT}`;
+Respond with EXACTLY:
+RATIONALE: <one sentence>
+SUPPORTED: <YES or NO>`;
+}
+
+function splitIntoClaims(answer: string): string[] {
+  return answer
+    .split(/[.!?;,]\s+|\s+and\s+|\s+plus\s+/i)
+    .map((s) => s.replace(/^(and|plus)\s+/i, "").trim())
+    .filter((s) => s.length > 0);
 }

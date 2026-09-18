@@ -29,3 +29,25 @@ export function parseRagScore(text: string): RagMetricResult {
     raw: text,
   };
 }
+
+export interface ClaimJudgmentResult {
+  supported: boolean;
+  rationale: string;
+  raw: string;
+}
+
+export function parseClaimJudgment(text: string): ClaimJudgmentResult {
+  const supportedMatch = text.match(/^SUPPORTED:\s*(YES|NO)\b/im);
+  if (!supportedMatch) {
+    throw new Error(
+      `Judge did not return SUPPORTED: YES or NO. Raw output:\n${text}`,
+    );
+  }
+  const rationaleMatch = text.match(/^RATIONALE:\s*(.+)$/im);
+  const rationale = rationaleMatch?.[1]?.trim() ?? "";
+  return {
+    supported: supportedMatch[1]!.toUpperCase() === "YES",
+    rationale,
+    raw: text,
+  };
+}
