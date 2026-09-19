@@ -1,7 +1,7 @@
+import { label } from "@allure/helpers";
 import { expectIntegerInRange } from "@assertions/range";
 import { expectValidJson, extractJson } from "@assertions/schema";
 import { expectLineCount, expectSingleWord } from "@assertions/shape";
-import { label } from "@harness/allure";
 import { generate } from "@llm/client";
 import { Severity } from "allure-js-commons";
 import { describe, it } from "vitest";

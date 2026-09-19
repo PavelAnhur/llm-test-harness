@@ -1,6 +1,6 @@
-import * as allure from "allure-js-commons";
-import type { MultiRunResult } from "./multi-run";
 import { type NotesWeek, buildNotesUrl } from "@config/notes";
+import type { MultiRunResult } from "@harness/multi-run";
+import * as allure from "allure-js-commons";
 
 export async function label(opts: {
   epic?: string;

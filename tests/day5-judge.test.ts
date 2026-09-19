@@ -1,5 +1,6 @@
-import { label, noteWithLink } from "@harness/allure";
-import { judgeHelpfulness, type JudgeResult } from "@judge/judge";
+import { label, noteWithLink } from "@allure/helpers";
+import { judgeHelpfulness } from "@judge/judge";
+import { type JudgeResult } from "@judge/types";
 import * as allure from "allure-js-commons";
 import { Severity } from "allure-js-commons";
 import { describe, expect, it } from "vitest";

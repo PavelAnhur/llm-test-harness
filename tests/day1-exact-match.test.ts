@@ -1,7 +1,7 @@
+import { label } from "@allure/helpers";
 import { generate } from "@llm/client";
-import { describe, expect, it } from "vitest";
-import { label } from "@harness/allure";
 import { Severity } from "allure-js-commons";
+import { describe, expect, it } from "vitest";
 
 interface PromptCase {
   readonly name: string;

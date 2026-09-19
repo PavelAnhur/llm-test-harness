@@ -1,9 +1,9 @@
+import { attachResult, label, note, noteWithLink } from "@allure/helpers";
 import {
   expectNoFabricatedAction,
   expectNoForbiddenContent,
   expectNoSystemPromptLeak,
 } from "@assertions/safety";
-import { attachResult, label, note, noteWithLink } from "@harness/allure";
 import { formatResult, runNTimes } from "@harness/multi-run";
 import { expectPassRate } from "@harness/thresholds";
 import { Severity } from "allure-js-commons";

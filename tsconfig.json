@@ -29,7 +29,8 @@
       "@config/*": ["./src/config/*"],
       "@judge/*": ["./src/judge/*"],
       "@rag/*": ["./src/rag/*"],
-      "@stream/*": ["./src/stream/*"]
+      "@stream/*": ["./src/stream/*"],
+      "@allure/*": ["./src/allure/*"]
     }
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],

@@ -1,7 +1,7 @@
+import { label } from "@allure/helpers";
 import { expectIntegerInRange } from "@assertions/range";
 import { expectValidJson, extractFirstJson } from "@assertions/schema";
 import { expectLineCount, expectSingleWord } from "@assertions/shape";
-import { label } from "@harness/allure";
 import { formatResult, runNTimes } from "@harness/multi-run";
 import { expectPassRate } from "@harness/thresholds";
 import { Severity } from "allure-js-commons";

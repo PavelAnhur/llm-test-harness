@@ -1,4 +1,4 @@
-import { label, noteWithLink } from "@harness/allure";
+import { label, noteWithLink } from "@allure/helpers";
 import { judgeFaithfulness } from "@rag/faithfulness";
 import { judgeRelevance } from "@rag/relevance";
 import { type RagMetricInput, type RagMetricResult } from "@rag/types";
