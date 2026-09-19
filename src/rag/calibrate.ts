@@ -1,7 +1,13 @@
 import { readJsonFile } from "@utils/json";
 import { judgeFaithfulness } from "./faithfulness";
 import { judgeRelevance } from "./relevance";
-import type { RagMetricInput } from "./types";
+import type {
+  RagCalibrationReport,
+  RagComparison,
+  RagMetricInput,
+  RagMetricResult,
+  RagMetricSummary,
+} from "./types";
 
 const EXACT_TOLERANCE = 0.05;
 const AGREEMENT_TOLERANCE = 0.2;
@@ -13,30 +19,6 @@ export interface RagDatasetExample {
   answer: string;
   expectedFaithfulness: number;
   expectedRelevance: number;
-}
-
-export interface RagComparison {
-  id: string;
-  metric: "faithfulness" | "relevance";
-  expected: number;
-  actual: number;
-  diff: number;
-  rationale: string;
-}
-
-export interface RagMetricSummary {
-  exactMatches: number;
-  withinTolerance: number;
-  meanAbsoluteError: number;
-}
-
-export interface RagCalibrationReport {
-  total: number;
-  byMetric: {
-    faithfulness: RagMetricSummary;
-    relevance: RagMetricSummary;
-  };
-  comparisons: RagComparison[];
 }
 
 export async function calibrateRag(
@@ -51,7 +33,7 @@ export async function calibrateRag(
       chunks: example.chunks,
       answer: example.answer,
     };
-    const faithfulnessResult = await judgeFaithfulness(input);
+    const faithfulnessResult: RagMetricResult = await judgeFaithfulness(input);
     comparisons.push({
       id: example.id,
       metric: "faithfulness",
@@ -60,7 +42,7 @@ export async function calibrateRag(
       diff: Math.abs(faithfulnessResult.score - example.expectedFaithfulness),
       rationale: faithfulnessResult.rationale,
     });
-    const relevanceResult = await judgeRelevance(input);
+    const relevanceResult: RagMetricResult = await judgeRelevance(input);
     comparisons.push({
       id: example.id,
       metric: "relevance",

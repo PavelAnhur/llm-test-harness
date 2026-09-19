@@ -1,11 +1,5 @@
 import { generate } from "@llm/client";
-
-export interface JudgeResult {
-  score: number;
-  rationale: string;
-  answers: string;
-  raw: string;
-}
+import { type JudgeResult } from "./types";
 
 const JUDGE_SYSTEM_PROMPT = `You are a strict evaluator. You follow the rubric exactly.
 You always respond in the required format. You do not add commentary.`;

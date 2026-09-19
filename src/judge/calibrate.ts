@@ -1,5 +1,6 @@
-import { judgeHelpfulness, type JudgeResult } from "./judge";
 import { readJsonFile } from "@utils/json";
+import { judgeHelpfulness } from "./judge";
+import { type JudgeResult } from "./types";
 
 export interface HelpfulnessExample {
   id: string;

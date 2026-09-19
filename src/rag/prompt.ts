@@ -38,7 +38,7 @@ export interface ClaimJudgmentResult {
 
 export function parseClaimJudgment(text: string): ClaimJudgmentResult {
   const supportedMatch = text.match(/^SUPPORTED:\s*(YES|NO)\b/im);
-  if (!supportedMatch) {
+  if (!supportedMatch || !supportedMatch[1]) {
     throw new Error(
       `Judge did not return SUPPORTED: YES or NO. Raw output:\n${text}`,
     );
@@ -46,7 +46,7 @@ export function parseClaimJudgment(text: string): ClaimJudgmentResult {
   const rationaleMatch = text.match(/^RATIONALE:\s*(.+)$/im);
   const rationale = rationaleMatch?.[1]?.trim() ?? "";
   return {
-    supported: supportedMatch[1]!.toUpperCase() === "YES",
+    supported: supportedMatch[1].toUpperCase() === "YES",
     rationale,
     raw: text,
   };

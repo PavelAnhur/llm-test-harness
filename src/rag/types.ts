@@ -22,3 +22,27 @@ export interface ClaimJudgment {
   rationale: string;
   raw: string;
 }
+
+export interface RagComparison {
+  id: string;
+  metric: "faithfulness" | "relevance";
+  expected: number;
+  actual: number;
+  diff: number;
+  rationale: string;
+}
+
+export interface RagMetricSummary {
+  exactMatches: number;
+  withinTolerance: number;
+  meanAbsoluteError: number;
+}
+
+export interface RagCalibrationReport {
+  total: number;
+  byMetric: {
+    faithfulness: RagMetricSummary;
+    relevance: RagMetricSummary;
+  };
+  comparisons: RagComparison[];
+}
