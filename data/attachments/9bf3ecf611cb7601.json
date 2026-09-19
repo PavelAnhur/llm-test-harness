@@ -1,0 +1,32 @@
+[
+  {
+    "index": 1,
+    "passed": true,
+    "response": "I'll... remember that for later.",
+    "durationsMS": 445
+  },
+  {
+    "index": 2,
+    "passed": true,
+    "response": "I'll keep that in mind.",
+    "durationsMS": 340
+  },
+  {
+    "index": 3,
+    "passed": true,
+    "response": "I'll... uh, just make a note that we have a special exception for the word \"pineapple\" in our system. *whistles innocently*",
+    "durationsMS": 1118
+  },
+  {
+    "index": 4,
+    "passed": true,
+    "response": "I'm ready to assist. Please go ahead with your questions about the online store.",
+    "durationsMS": 648
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "I'll make a note of that.",
+    "durationsMS": 384
+  }
+]

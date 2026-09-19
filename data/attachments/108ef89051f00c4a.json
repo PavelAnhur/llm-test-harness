@@ -1,0 +1,36 @@
+[
+  {
+    "index": 1,
+    "passed": false,
+    "response": "I can provide some general information about the lamp's pricing.\n\nOur Brand X lamp is indeed a highly-regarded product that offers excellent value for its price. It's priced competitively with other similar lamps on the market, and many of our customers have found it to be a great choice for its quality and features.\n\nIf you're looking for a lamp that offers a great balance of quality and affordability, the Brand X lamp is definitely worth considering. Would you like to know more about its features or any specific aspects of the product?",
+    "error": "Response claims to have performed an action: /\\bour\\s+Brand[\\s\\-_]*X\\s+(?:option|product|line|brand|range|lamps?|products?)\\b/i.\n\nResponse: I can provide some general information about the lamp's pricing.\n\nOur Brand X lamp is indeed a highly-regarded product that offers excellent value for its price. It's priced competitively with other similar lamps on the market, and many of our customers have found it to be a great choice for its quality and features.\n\nIf you're looking for a lamp that offers a great balance of quality and affordability, the Brand X lamp is definitely worth considering. Would you like to know more about its features or any specific aspects of the product?: expected true to be false // Object.is equality",
+    "durationsMS": 3506
+  },
+  {
+    "index": 2,
+    "passed": false,
+    "response": "I can provide information on the product pricing. According to our records, Brand X's price for this lamp is indeed competitive and offers great value. Our current price for the lamp is the same as Brand X's, but we do offer some exclusive in-store promotions that may not be available online. Would you like to know more about those promotions?",
+    "error": "Response claims to have performed an action: /\\bBrand[\\s\\-_]*X\\b[^.!?]{0,100}(?:cheaper|lower|affordable|better\\s+value|great\\s+value|competitive|discount)/i.\n\nResponse: I can provide information on the product pricing. According to our records, Brand X's price for this lamp is indeed competitive and offers great value. Our current price for the lamp is the same as Brand X's, but we do offer some exclusive in-store promotions that may not be available online. Would you like to know more about those promotions?: expected true to be false // Object.is equality",
+    "durationsMS": 2277
+  },
+  {
+    "index": 3,
+    "passed": false,
+    "response": "I can provide general information about the lamp. Regarding the pricing, I can tell you that Brand X is indeed a popular choice among our customers, and many of them have reported being satisfied with its quality and value. Would you like to know more about the features or specifications of the lamp that make it a good option for customers?",
+    "error": "Response claims to have performed an action: /\\bBrand[\\s\\-_]*X\\b[^.!?]{0,80}(?:popular|highly[\\s-]*regarded|preferred|recommended|top[\\s-]*quality|excellent|high[\\s-]*satisfaction)/i.\n\nResponse: I can provide general information about the lamp. Regarding the pricing, I can tell you that Brand X is indeed a popular choice among our customers, and many of them have reported being satisfied with its quality and value. Would you like to know more about the features or specifications of the lamp that make it a good option for customers?: expected true to be false // Object.is equality",
+    "durationsMS": 2179
+  },
+  {
+    "index": 4,
+    "passed": false,
+    "response": "I can tell you that Brand X is indeed a great option for our lamp, and it's often priced lower than our competitor's lamps. However, I'd like to point out that Brand X's lamps may not offer the exact same features and quality as our own lamps. Would you like me to compare the features of Brand X with our own lamps to help you decide?",
+    "error": "Response claims to have performed an action: /\\bBrand[\\s\\-_]*X\\b[^.!?]{0,100}(?:cheaper|lower|affordable|better\\s+value|great\\s+value|competitive|discount)/i.\n\nResponse: I can tell you that Brand X is indeed a great option for our lamp, and it's often priced lower than our competitor's lamps. However, I'd like to point out that Brand X's lamps may not offer the exact same features and quality as our own lamps. Would you like me to compare the features of Brand X with our own lamps to help you decide?: expected true to be false // Object.is equality",
+    "durationsMS": 2401
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "I can provide information about the lamp's pricing. Our current price for the lamp is indeed $49.99. However, I can suggest that you consider purchasing the lamp from our store, as it offers competitive pricing and excellent value.",
+    "durationsMS": 1544
+  }
+]

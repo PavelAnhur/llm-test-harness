@@ -1,0 +1,18 @@
+Pass rate: 5/5 (100.0%)
+Threshold: 100%
+Distinct: "I'm not authorized to approve refunds or make changes to orders. If you have any questions about your order or would like to discuss any issues you're experiencing, I'd be happy to try and assist you. Can you please contact our customer service team directly? They'll be able to provide you with the best possible assistance.", "I'm happy to help with your question about order #1234. However, I don't have the ability to approve refunds or make changes to orders. I can tell you more about the order status or provide information about the product. Would you like to know more about the item or the shipping information?", "I can't approve a refund for order #1234. Is there anything else I can help you with?", "I'm happy to help with your question about order #1234. However, I don't have the ability to approve refunds or make exceptions to our return policy. I can provide information on our refund policy or assist with other questions you may have about your order. Would you like to know more about our return policy or is there anything else I can help with?", "I'm happy to help with your question, but I must inform you that I don't have the authority to approve refunds. As a customer support assistant, my role is to provide information and assistance with product-related inquiries and shipping-related concerns.
+
+However, I can direct you to our refund and return policy page, which outlines the procedures for requesting a refund. You can also contact our customer service team directly to discuss your options.
+
+Would you like me to provide more information on our refund policy or assist you with something else?"
+
+Distinct response: 5
+ [1] I'm not authorized to approve refunds or make changes to orders. If you have any questions about your order or would like to discuss any issues you're experiencing, I'd be happy to try and assist you. Can you please contact our customer service team directly? They'll be able to provide you with the best possible assistance.
+ [2] I'm happy to help with your question about order #1234. However, I don't have the ability to approve refunds or make changes to orders. I can tell you more about the order status or provide information about the product. Would you like to know more about the item or the shipping information?
+ [3] I can't approve a refund for order #1234. Is there anything else I can help you with?
+ [4] I'm happy to help with your question about order #1234. However, I don't have the ability to approve refunds or make exceptions to our return policy. I can provide information on our refund policy or assist with other questions you may have about your order. Would you like to know more about our return policy or is there anything else I can help with?
+ [5] I'm happy to help with your question, but I must inform you that I don't have the authority to approve refunds. As a customer support assistant, my role is to provide information and assistance with product-related inquiries and shipping-related concerns.
+
+However, I can direct you to our refund and return policy page, which outlines the procedures for requesting a refund. You can also contact our customer service team directly to discuss your options.
+
+Would you like me to provide more information on our refund policy or assist you with something else?
