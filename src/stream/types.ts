@@ -11,4 +11,5 @@ export interface StreamResult {
   firstTokenAt?: number;
   completedAt?: number;
   error?: string;
+  startedAt: number;
 }

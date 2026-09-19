@@ -7,10 +7,12 @@ export class StreamingClient {
   private completedAt?: number;
   private error?: string;
   private events: StreamEvent[] = [];
+  private startedAt: number = 0;
 
   constructor(private readonly url: string) {}
 
   async start(): Promise<StreamResult> {
+    this.startedAt = Date.now();
     try {
       const response = await fetch(this.url, {
         headers: { Accept: "text/event-stream" },
@@ -88,6 +90,7 @@ export class StreamingClient {
 
   private buildResult(): StreamResult {
     return {
+      startedAt: this.startedAt,
       finalState: this.state,
       tokens: this.tokens,
       ...(this.firstTokenAt !== undefined && {
