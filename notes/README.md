@@ -38,3 +38,18 @@ work on testing non-deterministic LLM outputs.
 | ------------ | ----- | ---------- | ---- | --------------------- |
 | Faithfulness | 79%   | 100%       | 0.04 | working               |
 | Relevance    | 47%   | 47%        | 0.27 | documented limitation |
+
+## Week 4 — Streaming
+
+[Read Week 4 in full →](./week-4.md)
+
+Streaming tests: token delivery, time to first token, mid-stream
+disconnect, client consistency. In progress.
+
+| Day | Focus                    | Status   |
+| --- | ------------------------ | -------- |
+| 1   | Streaming basics         | complete |
+| 2   | Time to first token      | complete |
+| 3   | Mid-stream disconnect    | planned  |
+| 4   | Client consistency       | planned  |
+| 5   | Integration and write-up | planned  |

@@ -8,7 +8,12 @@ export default defineConfig({
     globals: true,
     environment: "node",
     include: ["tests/**/*.test.ts"],
-    exclude: ["node_modules", "allure-report", "allure-results"],
+    exclude: [
+      "node_modules",
+      "allure-report",
+      "allure-results",
+      "tests/temp.test.ts",
+    ],
     testTimeout: 60_000,
     hookTimeout: 60_000,
     setupFiles: ["allure-vitest/setup"],

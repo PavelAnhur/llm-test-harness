@@ -5,3 +5,4 @@ allure-report/
 .env.local
 coverage/
 dist/
+tests/temp.test.ts
