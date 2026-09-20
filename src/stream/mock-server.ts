@@ -67,6 +67,11 @@ export class MockStreamServer {
       keepAliveAfterDone,
     } = this.config;
     try {
+      if (disconnectAfterTokens === 0) {
+        if (disconnectMode === "end") res.end();
+        else res.destroy();
+        return;
+      }
       for (let i = 0; i < tokens.length; i++) {
         const delay = i === 0 ? delayBeforeFirstToken : delayBetweenTokens;
         if (delay > 0) {

@@ -1,4 +1,9 @@
-export type StreamState = "connected" | "streaming" | "completed" | "errored";
+export type StreamState =
+  | "connected"
+  | "streaming"
+  | "completed" //[DONE] received
+  | "errored" // clean EOF, no [DONE]
+  | "truncated"; //socket destroyed / fetch failed
 
 export interface StreamEvent {
   token: string;
@@ -12,4 +17,5 @@ export interface StreamResult {
   completedAt?: number;
   error?: string;
   startedAt: number;
+  receivedDoneMarker: boolean;
 }

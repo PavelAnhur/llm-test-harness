@@ -4,14 +4,13 @@ Weeks 1–3 tested **what the model said**. Week 4 tests **how the
 model said it** — the transport, timing, and lifecycle of a
 token-by-token response.
 
-The four things this week measures:
+The three things this week measures:
 
 | Test                  | What it asserts                                              |
 | --------------------- | ------------------------------------------------------------ |
 | Token delivery        | Every token arrives, in order, once                          |
 | Time to first token   | The client measures the delay correctly                      |
 | Mid-stream disconnect | The client surfaces the error and keeps the partial response |
-| Client consistency    | The buffered output matches the sent sequence exactly        |
 
 ### Setup
 
@@ -101,6 +100,62 @@ to 29ms. That is what makes a tight band possible. On a real
 network, the overhead would be larger and the band would need to
 be wider. Localhost is the correct environment for a client-side
 timing test, and the numbers reflect that.
+
+### Day 3 — Mid-stream disconnect
+
+Three tests, one for each way a stream can end badly. All three
+pass.
+
+| Test                                                  | What it asserts                                                          |
+| ----------------------------------------------------- | ------------------------------------------------------------------------ |
+| Clean EOF without `[DONE]` marks the stream truncated | `finalState === "truncated"`, no error, partial tokens preserved         |
+| Abrupt socket destroy marks the stream errored        | `finalState === "errored"`, error set, partial tokens preserved          |
+| Socket dies before the first token invents no TTFT    | `firstTokenAt === undefined`, `tokens` empty, `finalState === "errored"` |
+
+**Why truncation and error are different states.**
+
+The first draft had a single failure state: `errored`. That is
+wrong, and the test suite proved it. A stream that ends with a
+clean EOF and no `[DONE]` marker is a _protocol_ failure — the
+server closed politely but broke the SSE contract. A stream that
+ends because the TCP socket was destroyed is a _transport_
+failure — the network or the peer vanished. These have different
+causes and different remediations. Collapsing them into one state
+throws away the information a reader needs to tell "the model
+stopped mid-sentence" apart from "the CI runner's network
+hiccupped."
+
+So `StreamState` gained a fifth value, `truncated`, and the client
+distinguishes the two cases on the way out of the read loop:
+
+- `receivedDoneMarker === true` → `completed`
+- loop exited via `read()` returning `{ done: true }`, no marker →
+  `truncated`
+- `catch` fired → `errored`
+
+**Why `receivedDoneMarker` lives on `StreamResult`.**
+
+The marker is the only field that separates a genuine completion
+from a truncation that happens to have delivered every expected
+token. Without it, a test asserting `tokens.length === 4` would
+pass on a stream that never sent `[DONE]` — the exact failure mode
+Day 3 exists to catch. `receivedDoneMarker` is one boolean. It
+belongs next to the tokens it qualifies, not in a side channel.
+
+**The pre-first-token case.**
+
+If the socket dies before any token is written, the client leaves
+`firstTokenAt` undefined. Reporting a TTFT there would be a
+fabrication, and it would poison the Day 2 gates — a stream that
+never produced a first token would sail through a band assertion
+if the client invented a plausible-looking number. The third test
+asserts `firstTokenAt` is `undefined` specifically so a future
+refactor cannot quietly reintroduce a default.
+
+**The lesson.** Lifecycle state is not a boolean. "Did the stream
+finish?" has at least three meaningful answers here — completed,
+truncated, errored — and a test framework that only models two of
+them will pass streams it should fail.
 
 ---
 

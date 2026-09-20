@@ -8,6 +8,7 @@ export class StreamingClient {
   private error?: string;
   private events: StreamEvent[] = [];
   private startedAt: number = 0;
+  private receivedDoneMarker = false;
 
   constructor(private readonly url: string) {}
 
@@ -26,25 +27,21 @@ export class StreamingClient {
       const reader = response.body.getReader();
       const decoder = new TextDecoder("utf-8");
       let buffer = "";
-      let receivedDoneMarker = false;
-      while (!receivedDoneMarker) {
+      while (!this.receivedDoneMarker) {
         const { value, done } = await reader.read();
         if (done) break;
         buffer += decoder.decode(value, { stream: true });
         const lines = buffer.split(/\r?\n/);
         buffer = lines.pop() ?? "";
         for (const line of lines) {
-          if (this.processLine(line)) {
-            receivedDoneMarker = true;
-            break;
-          }
+          if (this.processLine(line)) break;
         }
       }
       if (buffer.trim().length > 0) {
         this.processLine(buffer);
       }
-      this.state = "completed";
       this.completedAt = Date.now();
+      this.state = this.receivedDoneMarker ? "completed" : "truncated";
     } catch (err) {
       this.state = "errored";
       this.error =
@@ -66,7 +63,10 @@ export class StreamingClient {
     if (!trimmed || trimmed.startsWith(":")) return false;
     if (!trimmed.startsWith("data:")) return false;
     const dataStr = trimmed.slice(5).trim();
-    if (dataStr === "[DONE]") return true;
+    if (dataStr === "[DONE]") {
+      this.receivedDoneMarker = true;
+      return true;
+    }
     const token = this.extractToken(dataStr);
     const now = Date.now();
     if (this.firstTokenAt === undefined) {
@@ -93,6 +93,7 @@ export class StreamingClient {
       startedAt: this.startedAt,
       finalState: this.state,
       tokens: this.tokens,
+      receivedDoneMarker: this.receivedDoneMarker,
       ...(this.firstTokenAt !== undefined && {
         firstTokenAt: this.firstTokenAt,
       }),

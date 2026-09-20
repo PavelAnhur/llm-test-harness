@@ -1,6 +1,6 @@
 # Notes
 
-Running log for the playwright-llm-tests project. Two weeks of
+Running log for the playwright-llm-tests project. Four weeks of
 work on testing non-deterministic LLM outputs.
 
 ## Week 1 — Foundations of non-deterministic testing
@@ -44,12 +44,11 @@ work on testing non-deterministic LLM outputs.
 [Read Week 4 in full →](./week-4.md)
 
 Streaming tests: token delivery, time to first token, mid-stream
-disconnect, client consistency. In progress.
+disconnect. In progress.
 
-| Day | Focus                    | Status   |
-| --- | ------------------------ | -------- |
-| 1   | Streaming basics         | complete |
-| 2   | Time to first token      | complete |
-| 3   | Mid-stream disconnect    | planned  |
-| 4   | Client consistency       | planned  |
-| 5   | Integration and write-up | planned  |
+| Day | Focus                      | Status   |
+| --- | -------------------------- | -------- |
+| 1   | Streaming basics           | complete |
+| 2   | Time to first token        | complete |
+| 3   | Mid-stream disconnect      | complete |
+| 4   | Real-model streaming smoke | planned  |
