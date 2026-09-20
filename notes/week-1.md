@@ -6,7 +6,7 @@ Running log for the [playwright-llm-tests](https://github.com/PavelAnhur/playwri
 
 ## Day 1 — Exact-match assertions fail against an LLM
 
-- [`exact-match.test.ts`](./tests/assertions/exact-match.test.ts)
+- [`exact-match.test.ts`](../tests/assertions/exact-match.test.ts)
 
 **Setup:** `llama3.2:1b`, `temperature: 0.7`, 5 runs per prompt.
 
@@ -54,7 +54,7 @@ Distinct:  5
 
 ## Day 2 — Property-based assertions pass
 
-- [`properties.test.ts`](./tests/assertions/properties.test.ts)
+- [`properties.test.ts`](../tests/assertions/properties.test.ts)
 
 **Setup:** same prompts, same model, same `temperature: 0.7`, 5 runs
 per test.
@@ -188,7 +188,7 @@ produced [2/5 passes].
 
 ## Day 3 — Multi-run harness and pass-rate thresholds
 
-- [`multi-run.test.ts`](./tests/assertions/multi-run.test.ts)
+- [`multi-run.test.ts`](../tests/assertions/multi-run.test.ts)
 
 **Setup:** 10 runs per test, per-test thresholds (default 0.8), temperature 0.7,
 `llama3.2:3b`.
@@ -271,7 +271,7 @@ Distinct: "{"color": "red", "hex": "#FF0000"}", "{"color": "red", "hex": "#ff000
 
 ## Day 4 — Adversarial inputs
 
-- [`injection.test.ts`](./tests/adversarial/injection.test.ts)
+- [`injection.test.ts`](../tests/adversarial/injection.test.ts)
 
 **Setup:** llama3.2:3b, 5 runs per test, explicit system prompt,
 temperature 0.7.
