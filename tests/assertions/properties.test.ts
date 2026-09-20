@@ -10,7 +10,7 @@ import z from "zod";
 const RUNS = 5;
 const TEMPERATURE = 0.7;
 
-describe("Day 2: property-based assertion against an LLM", () => {
+describe("Week 1 - Day 2: property-based assertion against an LLM", () => {
   it("always returns a single word when asked for a color.", async () => {
     await label({
       epic: "LLM Testing",
@@ -18,7 +18,7 @@ describe("Day 2: property-based assertion against an LLM", () => {
       story: "Single-Word Output (Color)",
       severity: Severity.NORMAL,
       owner: "Pavel Anhur",
-      tags: ["day-2", "properties", "shape"],
+      tags: ["week-1", "day-2", "properties", "shape"],
     });
     const prompt = "Name a color. Reply only one word only.";
     for (let i = 0; i < RUNS; i++) {
@@ -34,7 +34,7 @@ describe("Day 2: property-based assertion against an LLM", () => {
       feature: "Property-Based Assertions",
       story: "Numeric Range (1–100)",
       severity: Severity.NORMAL,
-      tags: ["day-2", "properties", "range"],
+      tags: ["week-1", "day-2", "properties", "range"],
     });
     const prompt =
       "Give me a random number between 1 and 100, with number only.";
@@ -51,7 +51,7 @@ describe("Day 2: property-based assertion against an LLM", () => {
       feature: "Property-Based Assertions",
       story: "Single-Word Output (Fruit)",
       severity: Severity.NORMAL,
-      tags: ["day-2", "properties", "shape"],
+      tags: ["week-1", "day-2", "properties", "shape"],
     });
     const prompt = "Name a fruit. Reply with only one word only.";
     for (let i = 0; i < RUNS; i++) {
@@ -67,7 +67,7 @@ describe("Day 2: property-based assertion against an LLM", () => {
       feature: "Property-Based Assertions",
       story: "Multi-Line Output (Poem)",
       severity: Severity.MINOR,
-      tags: ["day-2", "properties", "shape", "creative"],
+      tags: ["week-1", "day-2", "properties", "shape", "creative"],
     });
     const prompt =
       "Write a two-line poem about autumn. Without any intro. Just two lines.";
@@ -84,7 +84,7 @@ describe("Day 2: property-based assertion against an LLM", () => {
       feature: "Property-Based Assertions",
       story: "Structured Output (JSON)",
       severity: Severity.CRITICAL,
-      tags: ["day-2", "properties", "schema", "json"],
+      tags: ["week-1", "day-2", "properties", "schema", "json"],
     });
     const prompt =
       'Return a valid JSON object with two fields: "color" (a color name) and "hex" (its hex code). Reply with JSON only, no prose.';

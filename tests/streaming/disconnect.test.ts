@@ -7,7 +7,7 @@ import { describe, expect, it } from "vitest";
 
 const TOKENS = ["Hello", " ", "world", "!"];
 
-describe("Day 3: Mid-stream disconnect", () => {
+describe("Week 4 - Day 3: Mid-stream disconnect", () => {
   it("marks the stream truncated on clean EOF without [DONE]", async () => {
     await label({
       epic: "LLM Testing",

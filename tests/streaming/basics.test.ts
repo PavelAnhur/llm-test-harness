@@ -10,7 +10,7 @@ const BASE_CONFIG: MockServerConfig = {
   tokens: ["Hello", " ", "world", "!"],
 };
 
-describe("Day 1: Streaming basics", () => {
+describe("Week 4 - Day 1: Streaming basics", () => {
   it("receives all tokens in order", async () => {
     await label({
       epic: "LLM Testing",

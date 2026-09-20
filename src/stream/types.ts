@@ -13,6 +13,7 @@ export interface StreamEvent {
 export interface StreamResult {
   finalState: StreamState;
   tokens: string[];
+  events: StreamEvent[];
   firstTokenAt?: number;
   completedAt?: number;
   error?: string;

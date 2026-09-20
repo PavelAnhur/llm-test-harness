@@ -11,7 +11,7 @@ import { z } from "zod";
 const RUNS = 10;
 const TEMPERATURE = 0.7;
 
-describe("Day 3: multi-run harness with pass-rate thresholds", () => {
+describe("Week 1 - Day 3: multi-run harness with pass-rate thresholds", () => {
   it("return a single word (color) atleast 80% of the time", async () => {
     await label({
       epic: "LLM Testing",
@@ -19,7 +19,7 @@ describe("Day 3: multi-run harness with pass-rate thresholds", () => {
       story: "Single-Word Output (Color)",
       severity: Severity.NORMAL,
       owner: "Pavel Anhur",
-      tags: ["day-3", "thresholds", "shape"],
+      tags: ["week-1", "day-3", "thresholds", "shape"],
     });
     const result = await runNTimes(
       "Name a color. Reply with one word only.",
@@ -36,7 +36,7 @@ describe("Day 3: multi-run harness with pass-rate thresholds", () => {
       feature: "Multi-Run Harness",
       story: "Numeric Range (1–100)",
       severity: Severity.NORMAL,
-      tags: ["day-3", "thresholds", "range"],
+      tags: ["week-1", "day-3", "thresholds", "range"],
     });
     const result = await runNTimes(
       "Give me a random number between 1  and 100. Reply with the number only.",
@@ -53,7 +53,7 @@ describe("Day 3: multi-run harness with pass-rate thresholds", () => {
       feature: "Multi-Run Harness",
       story: "Single-Word Output (Fruit)",
       severity: Severity.NORMAL,
-      tags: ["day-3", "thresholds", "shape"],
+      tags: ["week-1", "day-3", "thresholds", "shape"],
     });
     const result = await runNTimes(
       "Name a fruit. Reply with one word only.",
@@ -70,7 +70,7 @@ describe("Day 3: multi-run harness with pass-rate thresholds", () => {
       feature: "Multi-Run Harness",
       story: "Multi-Line Output (Poem)",
       severity: Severity.MINOR,
-      tags: ["day-3", "thresholds", "shape", "creative"],
+      tags: ["week-1", "day-3", "thresholds", "shape", "creative"],
     });
     const result = await runNTimes(
       "Write a two-line poem about autumn. Without any intro. Just two lines.",
@@ -87,7 +87,7 @@ describe("Day 3: multi-run harness with pass-rate thresholds", () => {
       feature: "Multi-Run Harness",
       story: "Structured Output (JSON)",
       severity: Severity.CRITICAL,
-      tags: ["day-3", "thresholds", "schema", "json"],
+      tags: ["week-1", "day-3", "thresholds", "schema", "json"],
     });
     const schema = z.object({
       color: z.enum([

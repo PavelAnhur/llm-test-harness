@@ -5,14 +5,14 @@ import * as allure from "allure-js-commons";
 import { Severity } from "allure-js-commons";
 import { describe, expect, it } from "vitest";
 
-describe("Day 5: LLM-as-a-judge integration", () => {
+describe("Week 2 - Day 5: LLM-as-a-judge integration", () => {
   it("scores a helpful response above the passing threshold", async () => {
     await label({
       epic: "LLM Testing",
       feature: "LLM-as-a-Judge",
       story: "Direct Answer",
       severity: Severity.NORMAL,
-      tags: ["day-5", "judge"],
+      tags: ["week-2", "day-5", "judge"],
     });
     const question = "How much does the lamp cost?";
     const response =
@@ -45,7 +45,7 @@ describe("Day 5: LLM-as-a-judge integration", () => {
       feature: "LLM-as-a-Judge",
       story: "Redirect Over-Score",
       severity: Severity.MINOR,
-      tags: ["day-5", "judge", "known-limitation"],
+      tags: ["week-2", "day-5", "judge", "known-limitation"],
     });
     const question = "How long does shipping take?";
     const response =

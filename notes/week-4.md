@@ -157,6 +157,97 @@ finish?" has at least three meaningful answers here — completed,
 truncated, errored — and a test framework that only models two of
 them will pass streams it should fail.
 
+### Day 4 — Real-model streaming smoke
+
+Days 1–3 ran against a mock SSE server. That was deliberate:
+determinism is the whole point of a timing test, and a mock
+server emits tokens at a rate the test controls.
+
+Day 4 does the opposite. One test, against a live Ollama model
+over NDJSON. Nothing about the timing is controlled — not the
+first-token delay, not the inter-token gap, not the total
+duration. The assertions are correspondingly loose. The mock
+suite owns precision. This test owns a different question: does
+the client speak to a real server at all?
+
+| Test                                    | What it asserts                                                          |
+| --------------------------------------- | ------------------------------------------------------------------------ |
+| Streams tokens from a live Ollama model | Completes, no error, at least one token, monotonic timestamps, sane TTFT |
+
+**The wire format is not the same.**
+
+The mock server speaks SSE: `text/event-stream`, lines prefixed
+with `data:`, terminated by the literal `[DONE]`. Ollama's
+streaming endpoint speaks NDJSON: one JSON object per line, no
+prefix, terminated by a frame with `done: true`. The two share a
+shape — line-delimited frames over a chunked HTTP response — but
+not a single byte of their framing.
+
+The client grew a protocol switch rather than a second class.
+Three things differ between SSE and NDJSON:
+
+- the request — `GET` with an `Accept` header versus `POST` with a
+  JSON body
+- the line parser — strip `data:` and maybe-JSON-parse the rest
+  versus JSON-parse the whole line
+- the terminal marker — `[DONE]` versus `done: true`
+
+Everything else — the read loop, the buffer, the state machine,
+the `StreamResult` shape — is identical. A second client class
+would have duplicated the read loop to change three lines. The
+protocol switch keeps one state machine and one result type, and
+the Day 1–3 tests never learned that a second protocol exists.
+
+**Two Ollama quirks the parser handles.**
+
+The first is the metadata frame. Ollama opens the stream with a
+line carrying the model name and timestamp but no content. If the
+parser recorded that as a token, `firstTokenAt` would be the
+handshake, not the first word, and TTFT would be wrong by however
+long the model took to actually start generating. The parser
+ignores empty-content frames, so `firstTokenAt` is when real
+content arrives. This is the same class of bug Day 2 guarded
+against — a measurement that is plausible but wrong.
+
+The second is the terminal frame. Ollama sends `done: true` on a
+line with no content. The parser treats that as the marker and
+stops, which is correct, and does not record a token for it,
+which keeps the invariant that `tokens` holds content pieces
+only.
+
+**What the test asserts, and why it is loose.**
+
+- `finalState === "completed"` and `receivedDoneMarker === true`
+  — the stream ended the way a completed stream ends.
+- `error` is undefined — no transport failure surfaced.
+- at least one token, and the joined text is non-empty — the model
+  said something.
+- per-token `receivedAt` is non-decreasing — the client is not
+  reordering frames, and the timestamps are real.
+- `events.length === tokens.length` — the two arrays stay in
+  lockstep. This is the "client consistency" row from the top of
+  the week, in its cheapest possible form.
+- `0 <= ttft < 30000` — a floor of zero and a ceiling of thirty
+  seconds. No lower bound beyond zero, because a real model has no
+  guaranteed delay before its first token. No tight upper bound,
+  because on CPU the first token includes model load and can run
+  into the seconds. The number only has to be plausible.
+
+That last point is the difference between Day 2 and Day 4. Day 2
+asserted `[200, 250]` against a mock because the mock's delay was
+a fact. Day 4 asserts `< 30000` against a real model because the
+real model's delay is not a fact the test can know. A tight band
+here would be a flake generator, and a flaky smoke test is worse
+than no smoke test.
+
+**The lesson.** A mock proves the client is correct. A live model
+proves the client is connected to reality. They answer different
+questions and neither substitutes for the other. The mock suite
+is where timing assertions live; the smoke test is where "it
+actually works against the thing we ship against" lives. Keeping
+them separate is what lets each one assert at the right
+tightness.
+
 ---
 
 [← Back to notes index](./README.md)

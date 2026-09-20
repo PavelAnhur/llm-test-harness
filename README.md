@@ -3,7 +3,7 @@
 A test harness for non-deterministic LLM outputs. Built with TypeScript
 and Vitest.
 
-> **Status:** work in progress. Week 3 of a 4-week build. See Roadmap.
+> **Status:** complete. Four-week build. See Roadmap.
 
 📊 **View the latest Allure report** — https://pavelanhur.github.io/playwright-llm-tests/
 
@@ -33,6 +33,7 @@ rather than a single run.
 | Adversarial inputs   | Prompt injection, boundary inputs, empty input, role confusion            |
 | LLM-as-a-judge       | Rubric-based scoring, calibrated against a hand-labeled dataset           |
 | RAG metrics          | Faithfulness (per-claim), relevance (documented limitation)               |
+| Streaming            | Token delivery, time to first token, mid-stream disconnect, live smoke    |
 | Structured reporting | Allure reports with pass rate as an attachment, grouped by feature        |
 
 ## What this is not
@@ -71,7 +72,7 @@ The full tree is available below. Click to expand.
 <summary><strong>Expand full project structure</strong></summary>
 
 ```bash
-    playwright-llm-tests/
+        playwright-llm-tests/
     ├── src/
     │   ├── llm/
     │   │   └── client.ts              # provider-agnostic LLM wrapper
@@ -82,24 +83,46 @@ The full tree is available below. Click to expand.
     │   │   └── safety.ts              # prompt-leak and injection detectors
     │   ├── harness/
     │   │   ├── multi-run.ts           # run N times, compute pass rate
-    │   │   ├── thresholds.ts          # gate on pass rate
-    │   │   └── allure.ts              # label, attachResult, note helpers
+    │   │   └── thresholds.ts          # gate on pass rate
+    │   ├── allure/
+    │   │   └── helpers.ts             # label, noteWithLink, attachResult
     │   ├── judge/
+    │   │   ├── types.ts               # judge result interfaces
     │   │   ├── judge.ts               # rubric-based LLM-as-a-judge
-    │   │   └── calibrate.ts           # agreement and MAE reporting
+    │   │   ├── calibrate.ts           # agreement and MAE reporting
+    │   │   └── calibrate.cli.ts       # CLI entry for calibration runs
     │   ├── rag/
     │   │   ├── types.ts               # shared RAG metric interfaces
     │   │   ├── prompt.ts              # shared prompt, format, parsers
     │   │   ├── faithfulness.ts        # per-claim grounding metric
     │   │   ├── relevance.ts           # answer relevance metric
-    │   │   └── calibrate.ts           # agreement and MAE reporting
+    │   │   ├── calibrate.ts           # agreement and MAE reporting
+    │   │   └── calibrate.cli.ts       # CLI entry for calibration runs
+    │   ├── stream/
+    │   │   ├── types.ts               # StreamState, StreamEvent, StreamResult
+    │   │   ├── client.ts              # SSE + Ollama NDJSON streaming client
+    │   │   └── mock-server.ts         # configurable SSE mock server
+    │   ├── utils/
+    │   │   ├── json.ts                # JSON parse/format helpers
+    │   │   └── path.ts                # path resolution helpers
     │   └── config/
     │       └── notes.ts               # notes URL constants
     ├── tests/
-    │   ├── day1-exact-match.test.ts   # exact-match failures
-    │   ├── day2-properties.test.ts    # property-based assertions
-    │   ├── day3-multi-run.test.ts     # pass-rate thresholds
-    │   ├── day4-adversarial.test.ts   # prompt injection, role confusion
+    │   ├── assertions/                # deterministic-style assertions on LLM output
+    │   │   ├── exact-match.test.ts    # the trap: exact-match fails on correct answers
+    │   │   ├── properties.test.ts     # schema, range, shape, safety
+    │   │   └── multi-run.test.ts      # pass-rate thresholds
+    │   ├── adversarial/               # inputs designed to break the model
+    │   │   └── injection.test.ts      # prompt injection, role confusion
+    │   ├── judge/                     # LLM-as-a-judge
+    │   │   └── helpfulness.test.ts    # rubric scoring, calibrated
+    │   ├── rag/                       # retrieval-augmented generation metrics
+    │   │   └── metrics.test.ts        # faithfulness, relevance
+    │   ├── streaming/                 # transport-level tests
+    │   │   ├── basics.test.ts         # token delivery, ordering
+    │   │   ├── ttft.test.ts           # time to first token
+    │   │   ├── disconnect.test.ts     # truncation vs error
+    │   │   └── smoke.test.ts          # live Ollama smoke test
     │   └── fixtures/
     │       ├── helpfulness-dataset.json  # 25 hand-labeled judge examples
     │       └── rag-dataset.json          # 19 hand-labeled RAG examples
@@ -107,22 +130,27 @@ The full tree is available below. Click to expand.
     │   ├── README.md                  # summary and index
     │   ├── week-1.md                  # foundations of non-deterministic testing
     │   ├── week-2.md                  # LLM-as-a-judge calibration
-    │   └── week-3.md                  # RAG metrics
+    │   ├── week-3.md                  # RAG metrics
+    │   └── week-4.md                  # streaming
     ├── scripts/
     │   └── prepare-history.mjs        # preserve Allure trend across runs
-    └── package.json
+    ├── eslint.config.mjs              # lint config
+    ├── tsconfig.json                  # TypeScript config (path aliases)
+    ├── vitest.config.ts               # Vitest config
+    ├── package.json
+    └── package-lock.json
 ```
 
 </details>
 
 ## Roadmap
 
-| **Week** | **Focus**                                                     | **Status**  |
-| :------- | :------------------------------------------------------------ | :---------- |
-| 1        | Property assertions, multi-run harness, adversarial inputs    | complete    |
-| 2        | LLM-as-a-judge with calibration against a hand-labeled sample | complete    |
-| 3        | RAG metrics (faithfulness, answer relevance)                  | complete    |
-| 4        | Streaming tests (SSE, TTFT, mid-stream disconnect)            | in progress |
+| **Week** | **Focus**                                                     | **Status** |
+| :------- | :------------------------------------------------------------ | :--------- |
+| 1        | Property assertions, multi-run harness, adversarial inputs    | complete   |
+| 2        | LLM-as-a-judge with calibration against a hand-labeled sample | complete   |
+| 3        | RAG metrics (faithfulness, answer relevance)                  | complete   |
+| 4        | Streaming tests (SSE, TTFT, mid-stream disconnect)            | complete   |
 
 Each week's full write-up lives in [NOTES](./notes/). Every finding, every
 calibration round, and every disagreement with the human labels is
@@ -148,10 +176,6 @@ non-deterministic.
 
 The published Allure report is a snapshot from the last local run. It is
 regenerated manually and pushed to the gh-pages branch.
-
-A mocked LLM provider is planned for Week 3. Once it lands, CI will run
-the full suite against recorded responses, and the report will regenerate
-on every push without a model dependency.
 
 ## Contributing
 

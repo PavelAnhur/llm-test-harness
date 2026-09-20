@@ -51,4 +51,4 @@ disconnect. In progress.
 | 1   | Streaming basics           | complete |
 | 2   | Time to first token        | complete |
 | 3   | Mid-stream disconnect      | complete |
-| 4   | Real-model streaming smoke | planned  |
+| 4   | Real-model streaming smoke | complete |

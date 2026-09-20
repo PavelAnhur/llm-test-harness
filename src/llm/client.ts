@@ -86,7 +86,7 @@ async function generateWithOllama(
   options: GenerateOptions,
 ): Promise<LlmResponse> {
   const baseUrl = process.env.OLLAMA_BASE_URL ?? "http://localhost:11434";
-  const model = process.env.OLLAMA_MODEL ?? "llama3.1";
+  const model = process.env.OLLAMA_MODEL ?? "llama3.2:3b";
   const startedAt = Date.now();
   const response = await fetch(`${baseUrl}/api/chat`, {
     method: "POST",
