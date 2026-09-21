@@ -8,7 +8,7 @@ const BASE_URL = process.env.OLLAMA_BASE_URL ?? "http://localhost:11434";
 const MODEL = process.env.OLLAMA_MODEL ?? "llama3.2:3b";
 const PROMPT = "Reply with exactly the word: pong";
 
-describe("Week 4 - Day 4: Real-model streaming smoke", () => {
+describe("Streaming: real-model smoke", () => {
   it(
     "streams tokens from a live Ollama model and completes cleanly",
     { timeout: 60_000 },

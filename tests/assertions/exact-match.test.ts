@@ -31,7 +31,7 @@ const PROMPT_CASES: readonly PromptCase[] = [
 const RUNS = 5;
 const TEMPERATURE = 0.7;
 
-describe("Week 1 - Day 1: exact-match assertions against an LLM", () => {
+describe("Assertions: exact-match", () => {
   for (const { name, prompt } of PROMPT_CASES) {
     it(`fails to return the same answer for ${name}`, async () => {
       // Capture the first response as our "expected" value.

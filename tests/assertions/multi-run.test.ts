@@ -11,7 +11,7 @@ import { z } from "zod";
 const RUNS = 10;
 const TEMPERATURE = 0.7;
 
-describe("Week 1 - Day 3: multi-run harness with pass-rate thresholds", () => {
+describe("Assertions: multi-run harness with pass-rate thresholds", () => {
   it("return a single word (color) atleast 80% of the time", async () => {
     await label({
       epic: "LLM Testing",

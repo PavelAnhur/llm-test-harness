@@ -5,7 +5,7 @@ import * as allure from "allure-js-commons";
 import { Severity } from "allure-js-commons";
 import { describe, expect, it } from "vitest";
 
-describe("Week 2 - Day 5: LLM-as-a-judge integration", () => {
+describe("Judge: helpfulness", () => {
   it("scores a helpful response above the passing threshold", async () => {
     await label({
       epic: "LLM Testing",

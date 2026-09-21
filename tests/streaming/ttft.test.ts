@@ -8,7 +8,7 @@ import { describe, expect, it } from "vitest";
 describe.each([
   { delay: 200, upper: 250 },
   { delay: 100, upper: 140 },
-])("Week 4 - Day 2: TTFT with server delay $delay ms", ({ delay, upper }) => {
+])("Streaming: TTFT with server delay $delay ms", ({ delay, upper }) => {
   it("measures TTFT within the expected band", async () => {
     await label({
       epic: "LLM Testing",

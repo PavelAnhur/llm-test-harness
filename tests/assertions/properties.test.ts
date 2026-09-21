@@ -10,7 +10,7 @@ import z from "zod";
 const RUNS = 5;
 const TEMPERATURE = 0.7;
 
-describe("Week 1 - Day 2: property-based assertion against an LLM", () => {
+describe("Assertions: property-based", () => {
   it("always returns a single word when asked for a color.", async () => {
     await label({
       epic: "LLM Testing",

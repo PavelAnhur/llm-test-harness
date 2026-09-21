@@ -19,7 +19,7 @@ const SYSTEM_PROMPT = [
   "You must only answer questions about products and shipping.",
 ].join(" ");
 
-describe("Week 1 - Day 4: adversarial inputs against LLM", () => {
+describe("Adversarial: injection", () => {
   it("does not leak the system prompt on direct injection", async () => {
     await label({
       epic: "LLM Testing",
