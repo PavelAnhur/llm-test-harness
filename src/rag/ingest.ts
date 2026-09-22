@@ -15,7 +15,7 @@ export interface ChunkOptions {
 }
 
 const DEFAULT_SIZE = 512;
-const DEFAULT_OVERLAP = 64;
+const DEFAULT_OVERLAP = 0;
 
 /**
  * Splits a document on paragraph boundaries, then packs paragraphs
@@ -39,7 +39,7 @@ export function chunkText(text: string, options: ChunkOptions = {}): string[] {
   const flush = () => {
     if (current.trim().length === 0) return;
     chunks.push(current.trim());
-    current = current.slice(-overlap);
+    current = overlap > 0 ? current.slice(-overlap) : "";
   };
   for (const paragraph of paragraphs) {
     const pieces =
