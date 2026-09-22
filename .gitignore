@@ -6,3 +6,6 @@ allure-report/
 coverage/
 dist/
 tests/temp.test.ts
+# Docker
+qdrant_data/
+.env.local
