@@ -52,3 +52,18 @@ disconnect. In progress.
 | 2   | Time to first token        | complete |
 | 3   | Mid-stream disconnect      | complete |
 | 4   | Real-model streaming smoke | complete |
+
+## Week 5 — Real retriever
+
+[Read Week 5 in full →](./week-5.md)
+
+A real retriever (Qdrant + Ollama embeddings) so the retrieval
+half of RAG could be tested, not just the generation half.
+Found that chunk overlap was pure cost on this corpus, and that
+precision@1 is a sharper signal than precision@k.
+
+| Metric                    | Result                              |
+| ------------------------- | ----------------------------------- |
+| Context recall            | 1.0 across all questions            |
+| Context precision@1       | 1.0 across all questions            |
+| Context precision@k (k=3) | 0.33 single-chunk, 0.67 cross-chunk |

@@ -33,7 +33,7 @@ describe("RAG: retrieval metrics", () => {
     it(`retrieves the right chunks for: ${question}`, async () => {
       await label({
         epic: "LLM Testing",
-        feature: "RAG Metrics",
+        feature: "RAG Retrieval",
         story: "Context precision and recall",
         severity: Severity.NORMAL,
         tags: ["week-5", "rag", "retrieval"],
@@ -77,7 +77,7 @@ describe("RAG: retrieval metrics", () => {
         allure.ContentType.TEXT,
       );
       await noteWithLink(
-        3,
+        5,
         "retrieval--context-precision-and-recall",
         "Deterministic retrieval metrics. Precision = of the chunks " +
           "retrieved, how many were relevant. Recall = of the chunks " +

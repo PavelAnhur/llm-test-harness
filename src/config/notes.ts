@@ -1,7 +1,7 @@
 export const NOTES_BASE_URL =
   "https://github.com/PavelAnhur/playwright-llm-tests/blob/main/notes";
 
-export const NOTES_WEEKS = [1, 2, 3, 4] as const;
+export const NOTES_WEEKS = [1, 2, 3, 4, 5] as const;
 
 export type NotesWeek = (typeof NOTES_WEEKS)[number];
 

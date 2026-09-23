@@ -3,7 +3,7 @@
 A test harness for non-deterministic LLM outputs. Built with TypeScript
 and Vitest.
 
-> **Status:** complete. Four-week build. See Roadmap.
+> **Status:** complete. Five-week build. See Roadmap.
 
 📊 **View the latest Allure report** — https://pavelanhur.github.io/playwright-llm-tests/
 
@@ -32,7 +32,8 @@ rather than a single run.
 | Pass-rate thresholds | Multi-run execution with a configurable success floor                     |
 | Adversarial inputs   | Prompt injection, boundary inputs, empty input, role confusion            |
 | LLM-as-a-judge       | Rubric-based scoring, calibrated against a hand-labeled dataset           |
-| RAG metrics          | Faithfulness (per-claim), relevance (documented limitation)               |
+| RAG — generation     | Faithfulness (per-claim), relevance (documented limitation)               |
+| RAG — retrieval      | Real retriever (Qdrant + Ollama embeddings), context precision and recall |
 | Streaming            | Token delivery, time to first token, mid-stream disconnect, live smoke    |
 | Structured reporting | Allure reports with pass rate as an attachment, grouped by feature        |
 
@@ -56,6 +57,8 @@ default model.
     npm install
     cp .env.example .env
     ollama pull llama3.2:3b
+    ollama pull nomic-embed-text
+    docker compose up -d
     npm test
 
 Generate and open the Allure report:
@@ -72,7 +75,7 @@ The full tree is available below. Click to expand.
 <summary><strong>Expand full project structure</strong></summary>
 
 ```bash
-        playwright-llm-tests/
+    playwright-llm-tests/
     ├── src/
     │   ├── llm/
     │   │   └── client.ts              # provider-agnostic LLM wrapper
@@ -94,8 +97,14 @@ The full tree is available below. Click to expand.
     │   ├── rag/
     │   │   ├── types.ts               # shared RAG metric interfaces
     │   │   ├── prompt.ts              # shared prompt, format, parsers
+    │   │   ├── embed.ts               # Ollama embeddings (nomic-embed-text)
+    │   │   ├── store.ts               # Qdrant client — upsert, search
+    │   │   ├── ingest.ts              # chunk + embed + upsert pipeline
+    │   │   ├── retriever.ts           # question → top-K chunks
     │   │   ├── faithfulness.ts        # per-claim grounding metric
     │   │   ├── relevance.ts           # answer relevance metric
+    │   │   ├── precision.ts           # context precision (deterministic)
+    │   │   ├── recall.ts              # context recall (deterministic)
     │   │   ├── calibrate.ts           # agreement and MAE reporting
     │   │   └── calibrate.cli.ts       # CLI entry for calibration runs
     │   ├── stream/
@@ -116,8 +125,9 @@ The full tree is available below. Click to expand.
     │   │   └── injection.test.ts      # prompt injection, role confusion
     │   ├── judge/                     # LLM-as-a-judge
     │   │   └── helpfulness.test.ts    # rubric scoring, calibrated
-    │   ├── rag/                       # retrieval-augmented generation metrics
-    │   │   └── metrics.test.ts        # faithfulness, relevance
+    │   ├── rag/                       # retrieval-augmented generation
+    │   │   ├── generation.test.ts     # faithfulness, relevance (LLM judge)
+    │   │   └── retrieval.test.ts      # precision, recall (deterministic)
     │   ├── streaming/                 # transport-level tests
     │   │   ├── basics.test.ts         # token delivery, ordering
     │   │   ├── ttft.test.ts           # time to first token
@@ -125,15 +135,20 @@ The full tree is available below. Click to expand.
     │   │   └── smoke.test.ts          # live Ollama smoke test
     │   └── fixtures/
     │       ├── helpfulness-dataset.json  # 25 hand-labeled judge examples
-    │       └── rag-dataset.json          # 19 hand-labeled RAG examples
+    │       ├── rag-dataset.json          # 19 hand-labeled RAG examples
+    │       └── hr-policy.txt             # source corpus for retrieval tests
     ├── notes/
     │   ├── README.md                  # summary and index
     │   ├── week-1.md                  # foundations of non-deterministic testing
     │   ├── week-2.md                  # LLM-as-a-judge calibration
     │   ├── week-3.md                  # RAG metrics
-    │   └── week-4.md                  # streaming
+    │   ├── week-4.md                  # streaming
+    │   └── week-5.md                  # real retriever and retrieval metrics
     ├── scripts/
-    │   └── prepare-history.mjs        # preserve Allure trend across runs
+    │   ├── prepare-history.mjs        # preserve Allure trend across runs
+    │   ├── smoke-rag.ts               # end-to-end retriever verification
+    │   └── inspect-chunks.ts          # print chunks produced by the chunker
+    ├── docker-compose.yml             # Qdrant vector DB
     ├── eslint.config.mjs              # lint config
     ├── tsconfig.json                  # TypeScript config (path aliases)
     ├── vitest.config.ts               # Vitest config
@@ -145,12 +160,13 @@ The full tree is available below. Click to expand.
 
 ## Roadmap
 
-| **Week** | **Focus**                                                     | **Status** |
-| :------- | :------------------------------------------------------------ | :--------- |
-| 1        | Property assertions, multi-run harness, adversarial inputs    | complete   |
-| 2        | LLM-as-a-judge with calibration against a hand-labeled sample | complete   |
-| 3        | RAG metrics (faithfulness, answer relevance)                  | complete   |
-| 4        | Streaming tests (SSE, TTFT, mid-stream disconnect)            | complete   |
+| **Week** | **Focus**                                                      | **Status** |
+| :------- | :------------------------------------------------------------- | :--------- |
+| 1        | Property assertions, multi-run harness, adversarial inputs     | complete   |
+| 2        | LLM-as-a-judge with calibration against a hand-labeled sample  | complete   |
+| 3        | RAG metrics (faithfulness, answer relevance)                   | complete   |
+| 4        | Streaming tests (SSE, TTFT, mid-stream disconnect)             | complete   |
+| 5        | Real retriever (Qdrant + embeddings), context precision/recall | complete   |
 
 Each week's full write-up lives in [NOTES](./notes/). Every finding, every
 calibration round, and every disagreement with the human labels is
@@ -164,6 +180,7 @@ documented there.
 - **Allure** — the report format. Pass rate appears as an attachment,
   not as pass/fail.
 - **zod** — schema validation for structured LLM responses.
+- **Qdrant** — vector database for the retriever, run via Docker.
 - **Ollama** — the local model runtime. llama3.2:3b is the default
   model for both tests and the judge.
 

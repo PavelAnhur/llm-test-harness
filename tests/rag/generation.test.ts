@@ -6,7 +6,7 @@ import * as allure from "allure-js-commons";
 import { Severity } from "allure-js-commons";
 import { describe, expect, it } from "vitest";
 
-describe("RAG: metrics", () => {
+describe("RAG: generation metrics", () => {
   describe("Faithfulness", () => {
     it("scores a fully grounded answer at or above 0.9", async () => {
       await label({
