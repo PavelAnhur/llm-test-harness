@@ -10,6 +10,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 
+const COLLECTION = "hr-policy-positive";
 const FIXTURE_PATH = join(__dirname, "..", "fixtures", "hr-policy.txt");
 
 const RELEVANT: Record<string, string[]> = {
@@ -25,9 +26,9 @@ const RELEVANT: Record<string, string[]> = {
 
 describe("RAG: retrieval metrics", () => {
   beforeAll(async () => {
-    await clearCollection();
+    await clearCollection(COLLECTION);
     const text = readFileSync(FIXTURE_PATH, "utf-8");
-    await ingestDoc({ id: "hr-policy", text });
+    await ingestDoc({ id: "hr-policy", text }, { collection: COLLECTION });
   }, 60_000);
   for (const [question, relevantIds] of Object.entries(RELEVANT)) {
     it(`retrieves the right chunks for: ${question}`, async () => {
@@ -38,7 +39,10 @@ describe("RAG: retrieval metrics", () => {
         severity: Severity.NORMAL,
         tags: ["week-5", "rag", "retrieval"],
       });
-      const retrieved = await retrieve(question, { k: 3 });
+      const retrieved = await retrieve(question, {
+        k: 3,
+        collection: COLLECTION,
+      });
       const precision = contextPrecision({
         retrieved,
         relevantChunkIds: relevantIds,

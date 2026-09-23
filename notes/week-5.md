@@ -250,6 +250,41 @@ which is a question about _what the model was allowed to see_.
 That's what precision and recall measure, and that's the half of
 RAG that had no coverage before this week.
 
+### What the negative tests found
+
+The happy-path tests prove the retriever works when there's a
+right answer to find. The negative tests prove what happens
+when there isn't.
+
+Two findings worth separating:
+
+**Similarity search always returns something.** Ask a question
+the corpus cannot answer — "What is the parental leave policy?"
+against an HR document with no parental leave content — and
+Qdrant still returns k chunks. It returns the nearest vectors,
+because that's what nearest-neighbour search does. The retriever
+has no mechanism to say "none of these is close enough." The
+generator then receives irrelevant context and is instructed to
+answer from it. This is not a bug in the retriever; it's a
+property of the approach. Fixing it needs a relevance threshold
+or a reranker, and neither is in scope.
+
+**Topical closeness is not the same as an answer.** The
+distractor test asks "How do I submit a vacation request?"
+against a document that mentions requests and vacation but
+never describes the submission process. The vacation chunk
+ranks high because it's semantically close, and it's also
+answer-empty. Precision catches this — the chunk isn't in the
+reference set. But the retriever cannot distinguish "close" from
+"correct," and no amount of tuning fixes that without adding a
+re-ranking step.
+
+Both findings point at the same structural limit: a retriever
+that ranks by similarity will always produce a ranked list, and
+a ranked list implies every entry is more relevant than the one
+below it. For an unanswerable question, that's a lie the system
+tells confidently.
+
 ---
 
 [← Back to notes index](./README.md)

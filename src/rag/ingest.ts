@@ -79,6 +79,10 @@ export interface IngestResult {
   chunks: Map<string, string>;
 }
 
+export interface IngestOptions extends ChunkOptions {
+  collection?: string;
+}
+
 /**
  * Ingests one document: deletes any prior chunks for the same docId,
  * chunks the text, embeds each chunk, and upserts.
@@ -87,9 +91,9 @@ export interface IngestResult {
  */
 export async function ingestDoc(
   doc: SourceDoc,
-  options: ChunkOptions = {},
-  collection = COLLECTION,
+  options: IngestOptions = {},
 ): Promise<IngestResult> {
+  const collection = options.collection ?? COLLECTION;
   await deleteByDocId(doc.id, collection);
   const chunkTexts = chunkText(doc.text, options);
   if (chunkTexts.length === 0) {
