@@ -1,0 +1,6 @@
+
+    <p>Re-ingesting a document must not duplicate its chunks. ingestDoc() calls deleteByDocId before upsert, so the second ingest replaces the first. If that delete were ever dropped or broken, every retrieval would return each chunk twice — which would double the noise in precision and quietly corrupt every metric. The chunk IDs must also be stable: same document, same IDs, same content. (IDs are UUIDs in Qdrant and readable IDs in the payload, so this comparison is against the readable form.)</p>
+    <p><a href="https://github.com/PavelAnhur/playwright-llm-tests/blob/main/notes/week-5.md#retrieval--negative-scenarios" target="_blank" rel="noopener">
+      Read the full write-up in notes/week-5.md →
+    </a></p>
+  

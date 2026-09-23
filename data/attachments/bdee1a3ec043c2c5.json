@@ -1,0 +1,17 @@
+[
+  {
+    "id": "hr-policy:1",
+    "score": 0.53787136,
+    "preview": "Full-time employees receive 10 paid sick days per year. Sick leave beyond 10 days requires a medical certificate. Sick d"
+  },
+  {
+    "id": "hr-policy:0",
+    "score": 0.49706256,
+    "preview": "Full-time employees accrue 20 days of paid vacation per year. Part-time employees accrue vacation proportional to hours "
+  },
+  {
+    "id": "hr-policy:2",
+    "score": 0.44187894,
+    "preview": "Employees may work remotely up to three days per week. Fully remote arrangements require manager approval and are evalua"
+  }
+]

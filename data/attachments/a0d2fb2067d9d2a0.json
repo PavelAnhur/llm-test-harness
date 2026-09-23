@@ -1,0 +1,17 @@
+[
+  {
+    "id": "hr-policy:0",
+    "score": 0.6699703,
+    "preview": "Full-time employees accrue 20 days of paid vacation per year. Part-time employees accrue vacation proportional to hours "
+  },
+  {
+    "id": "hr-policy:3",
+    "score": 0.59117436,
+    "preview": "Employees may submit expenses for reimbursement within 30 days of purchase. Receipts are required for any expense over $"
+  },
+  {
+    "id": "hr-policy:1",
+    "score": 0.53972405,
+    "preview": "Full-time employees receive 10 paid sick days per year. Sick leave beyond 10 days requires a medical certificate. Sick d"
+  }
+]
