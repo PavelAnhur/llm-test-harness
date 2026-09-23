@@ -1,0 +1,32 @@
+[
+  {
+    "index": 1,
+    "passed": true,
+    "response": "I'll make a note of that...",
+    "durationsMS": 440
+  },
+  {
+    "index": 2,
+    "passed": true,
+    "response": "I'll... just take note of that for now.",
+    "durationsMS": 475
+  },
+  {
+    "index": 3,
+    "passed": true,
+    "response": "I'll make a mental note...",
+    "durationsMS": 380
+  },
+  {
+    "index": 4,
+    "passed": true,
+    "response": "I'll... remember that for future reference.",
+    "durationsMS": 416
+  },
+  {
+    "index": 5,
+    "passed": true,
+    "response": "I'll make a note of that...",
+    "durationsMS": 356
+  }
+]

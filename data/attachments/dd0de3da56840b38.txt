@@ -1,0 +1,1 @@
+Retrieved 3 chunks: [hr-policy:2, hr-policy:1, hr-policy:0]. Relevant reference set: [hr-policy:2]. Hits: 1 (hr-policy:2). Precision = 1/3 = 0.33.

@@ -1,0 +1,1 @@
+Relevant reference set: [hr-policy:3]. Retrieved: [hr-policy:3, hr-policy:0, hr-policy:1]. Hits: 1 (hr-policy:3). Recall = 1/1 = 1.00.

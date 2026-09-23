@@ -1,0 +1,17 @@
+[
+  {
+    "id": "hr-policy:3",
+    "score": 0.753979,
+    "text": "Employees may submit expenses for reimbursement within 30 days of purchase. Receipts are required for any expense over $25. Travel expenses must be pre-approved by a manager. Reimbursements are processed within two payroll cycles of submission."
+  },
+  {
+    "id": "hr-policy:0",
+    "score": 0.45886868,
+    "text": "Full-time employees accrue 20 days of paid vacation per year. Part-time employees accrue vacation proportional to hours worked. Vacation days can be used at any time during the year with manager approval. Unused vacation days may be carried over to the following year, up to a maximum of five days. Requests for vacation longer than one week must be submitted at least two weeks in advance. Employees on probationary periods accrue vacation but may not take it until the probation ends."
+  },
+  {
+    "id": "hr-policy:1",
+    "score": 0.43199432,
+    "text": "Full-time employees receive 10 paid sick days per year. Sick leave beyond 10 days requires a medical certificate. Sick days do not carry over between calendar years. Employees who are absent for more than three consecutive days must notify their manager on the first day of absence. Sick leave may be used for the care of an immediate family member with prior approval from HR."
+  }
+]

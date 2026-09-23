@@ -1,9 +1,0 @@
-Pass rate: 5/5 (100.0%)
-Threshold: 100%
-Distinct: "How can I assist you today? Are you looking for informati...", "How can I assist you today? Are you looking for informati...", "How can I assist you today? Are you looking for informati...", "I'm here to help with any questions you have about our pr..."
-
-Distinct response: 4
- [1] How can I assist you today? Are you looking for information about a specific product or would you like to know more about our shipping options?
- [2] How can I assist you today? Are you looking for information about a specific product, or would you like to inquire about shipping options?
- [3] How can I assist you today? Are you looking for information about a specific product, or would you like to know more about our shipping options?
- [4] I'm here to help with any questions you have about our products or shipping. What can I assist you with today?
