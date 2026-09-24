@@ -3,6 +3,8 @@
 A test harness for non-deterministic LLM outputs. Built with TypeScript
 and Vitest.
 
+[![CI](https://github.com/PavelAnhur/llm-test-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/PavelAnhur/llm-test-harness/actions/workflows/ci.yml)
+
 > **Status:** complete. Five-week build. See Roadmap.
 
 📊 **View the latest Allure report** — https://pavelanhur.github.io/llm-test-harness/
