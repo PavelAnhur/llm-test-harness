@@ -2,7 +2,7 @@
   "name": "llm-test-harness",
   "version": "0.1.0",
   "private": true,
-  "description": "Test harness for non-deterministic LLM outputs: property assertions, pass-rate thresholds, and adversarial input tests.",
+  "description": "Test harness for non-deterministic LLM outputs: property assertions, pass-rate thresholds, adversarial inputs, LLM-as-a-judge, RAG metrics (generation + retrieval), and streaming tests.",
   "type": "module",
   "engines": {
     "node": ">=20"
@@ -10,6 +10,7 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:pure": "vitest run tests/streaming/basics.test.ts tests/streaming/ttft.test.ts tests/streaming/disconnect.test.ts",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
     "allure:serve": "allure serve allure-results",
@@ -28,7 +29,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
-    "@playwright/test": "^1.49.0",
     "@types/node": "^22.10.0",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",

@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 
@@ -29,3 +31,6 @@ jobs:
 
     - name: Lint
       run: npm run lint
+
+    - name: Pure tests (no model, no database)
+      run: npm run test:pure
