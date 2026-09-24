@@ -1,5 +1,5 @@
 export const NOTES_BASE_URL =
-  "https://github.com/PavelAnhur/playwright-llm-tests/blob/main/notes";
+  "https://github.com/PavelAnhur/llm-test-harness/blob/main/notes";
 
 export const NOTES_WEEKS = [1, 2, 3, 4, 5] as const;
 

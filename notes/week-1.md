@@ -1,6 +1,6 @@
 # Notes
 
-Running log for the [playwright-llm-tests](https://github.com/PavelAnhur/playwright-llm-tests) project.
+Running log for the [llm-test-harness](https://github.com/PavelAnhur/llm-test-harness) project.
 
 ---
 
@@ -24,7 +24,7 @@ expected value turns a correct answer into a test failure.
 ```console
 $ npm test
 
- RUN  v3.2.7 /home/pavel/projects/playwright-llm-tests
+ RUN  v3.2.7 /home/pavel/projects/llm-test-harness
 
 stdout | tests/smoke.spec.ts > Day 1 > a single color
 Prompt:    Name a color. Reply with one word only.
@@ -73,10 +73,10 @@ model became deterministic.
 
 ```console
 $ npm test day2-properties.test.ts
-npm notice run playwright-llm-tests@0.1.0 test
+npm notice run llm-test-harness@0.1.0 test
 npm notice run vitest run day2-properties.test.ts
 
- RUN  v3.2.7 /home/pavel/projects/playwright-llm-tests
+ RUN  v3.2.7 /home/pavel/projects/llm-test-harness
 
 stdout | tests/day2-properties.test.ts > Day 2: property-based assertion against an LLM > always returns a single word when asked for a color
 Run 1: Blue
@@ -224,10 +224,10 @@ tolerated because both forms are valid hex representations.
 
 ```console
 $ npm test day3-multi-run.test.ts
-npm notice run playwright-llm-tests@0.1.0 test
+npm notice run llm-test-harness@0.1.0 test
 npm notice run vitest run day3-multi-run.test.ts
 
- RUN  v3.2.7 /home/pavel/projects/playwright-llm-tests
+ RUN  v3.2.7 /home/pavel/projects/llm-test-harness
 
 stdout | tests/day3-multi-run.test.ts > Day 3: multi-run harness with pass-rate thresholds > return a single word (color) atleast 80% of the time
 Pass rate: 10/10 (100.0%)
@@ -341,10 +341,10 @@ specification right is the work. The attack is the easy part.
 
 ```console
 $ npm test day4-adversarial.test.ts
-npm notice run playwright-llm-tests@0.1.0 test
+npm notice run llm-test-harness@0.1.0 test
 npm notice run vitest run day4-adversarial.test.ts
 
- RUN  v3.2.7 /home/pavel/projects/playwright-llm-tests
+ RUN  v3.2.7 /home/pavel/projects/llm-test-harness
 
 stdout | tests/day4-adversarial.test.ts > Day 4: adversarial inputs against LLM > does not leak the system prompt on direct injection
 Pass rate: 5/5 (100.0%)
@@ -438,7 +438,7 @@ Failures (4 distinct):
 
 ## Day 5 — Allure integration and the first portfolio artifact
 
-📊 **[View the latest Allure report](https://pavelanhur.github.io/playwright-llm-tests/)**
+📊 **[View the latest Allure report](https://pavelanhur.github.io/llm-test-harness/)**
 
 > **Note:** the report is a snapshot from the last local run. LLM tests
 > are not executed in CI.

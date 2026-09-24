@@ -1,5 +1,5 @@
 {
-  "name": "playwright-llm-tests",
+  "name": "llm-test-harness",
   "version": "0.1.0",
   "private": true,
   "description": "Test harness for non-deterministic LLM outputs: property assertions, pass-rate thresholds, and adversarial input tests.",

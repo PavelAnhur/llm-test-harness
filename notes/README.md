@@ -1,6 +1,6 @@
 # Notes
 
-Running log for the playwright-llm-tests project. Five weeks of
+Running log for the llm-test-harness project. Five weeks of
 work on testing non-deterministic LLM outputs.
 
 ## Week 1 — Foundations of non-deterministic testing

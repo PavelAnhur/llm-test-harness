@@ -63,7 +63,7 @@ of what counts as an answer, and no rubric wording changes that.
 
 ```console
 npx tsx src/judge/calibrate.cli.ts
-npm notice run playwright-llm-tests@0.1.0 npx
+npm notice run llm-test-harness@0.1.0 npx
 npm notice run 'tsx' src/judge/calibrate.cli.ts
 
 === Calibration report ===

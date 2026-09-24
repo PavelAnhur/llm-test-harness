@@ -1,11 +1,11 @@
-# playwright-llm-tests
+# llm-test-harness
 
 A test harness for non-deterministic LLM outputs. Built with TypeScript
 and Vitest.
 
 > **Status:** complete. Five-week build. See Roadmap.
 
-📊 **View the latest Allure report** — https://pavelanhur.github.io/playwright-llm-tests/
+📊 **View the latest Allure report** — https://pavelanhur.github.io/llm-test-harness/
 
 ---
 
@@ -52,8 +52,8 @@ Clone the repository, install dependencies, and start Ollama with the
 default model.
 
 ```bash
-    git clone https://github.com/PavelAnhur/playwright-llm-tests.git
-    cd playwright-llm-tests
+    git clone https://github.com/PavelAnhur/llm-test-harness.git
+    cd llm-test-harness
     npm install
     cp .env.example .env
     ollama pull llama3.2:3b
@@ -75,7 +75,7 @@ The full tree is available below. Click to expand.
 <summary><strong>Expand full project structure</strong></summary>
 
 ```bash
-    playwright-llm-tests/
+    llm-test-harness/
     ├── src/
     │   ├── llm/
     │   │   └── client.ts              # provider-agnostic LLM wrapper
