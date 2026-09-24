@@ -1,6 +1,0 @@
-
-    <p>The server destroys the TCP socket after two tokens. The client sees a read error, not a clean EOF. The distinction matters: a truncated stream is a server protocol violation, an errored stream is a transport failure. The suite reports them separately so a flaky network is not mistaken for a model that stopped mid-sentence.</p>
-    <p><a href="https://github.com/PavelAnhur/playwright-llm-tests/blob/main/notes/week-4.md#day-3--mid-stream-disconnect" target="_blank" rel="noopener">
-      Read the full write-up in notes/week-4.md →
-    </a></p>
-  
